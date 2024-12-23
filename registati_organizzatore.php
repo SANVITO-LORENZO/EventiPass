@@ -7,5 +7,7 @@
 </head>
 <body>
     <h1>REGISTRAZIONE ORGANIZZATORE</h1>
+
+    
 </body>
 </html>

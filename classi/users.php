@@ -1,6 +1,6 @@
 <?php
 require_once("user.php");
-require_once("gestori\gestoreCSV.php");
+require_once("..\gestori\gestoreCSV.php");
 
 class Utenti {
     private $vett_utenti;
@@ -11,7 +11,7 @@ class Utenti {
         $this->gestoreCSV = new GestoreCSV();
 
         try {
-            $this->vett_utenti = $this->gestoreCSV->generaUtenti("documenti\login.csv");
+            $this->vett_utenti = $this->gestoreCSV->generaUtenti("..\documenti\login.csv");
         } catch (Exception $e) {
         }
     }

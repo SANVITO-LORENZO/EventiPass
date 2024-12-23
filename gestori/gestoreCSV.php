@@ -1,5 +1,5 @@
 <?php
-require_once("classi\users.php");
+require_once("..\classi\users.php");
 
 class GestoreCSV {
     public function generaUtenti($filename) {

@@ -1,16 +1,16 @@
 <?php
-require_once("classi\users.php");
+require_once("..\classi\users.php");
 
 if(!isset($_SESSION))session_start();
 
 
 if(!isset($_GET["nome"])||!isset($_GET["password"])){
-    header("Location: index.php?messaggio=login non effettuato");
+    header("Location: ..\index.php?messaggio=login non effettuato");
     exit;
 }
 
 if(empty($_GET["nome"])||empty($_GET["password"])){
-    header("Location: index.php?messaggio=login non effettuato");
+    header("Location: ..\index.php?messaggio=login non effettuato");
     exit;
 }
 
@@ -26,7 +26,7 @@ if($risultato!="niente"){
     exit;
 }
 else{
-    header("Location: index.php?messaggio=login non effettuato");
+    header("Location: ..\index.php?messaggio=login non effettuato");
     exit;
 }
 
