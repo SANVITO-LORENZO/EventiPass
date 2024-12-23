@@ -1,3 +1,9 @@
+<?php
+if(!isset($_SESSION["autenticato"])){
+    header("location: index.php?messaggio=errore");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +13,7 @@
 </head>
 <body>
     <h1>organizzatore</h1>
+
 
 
 

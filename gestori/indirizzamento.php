@@ -1,7 +1,6 @@
 <?php
 if(!isset($_SESSION))session_start();
 
-
 if(isset($_SESSION["autenticato"])){
     if($_SESSION["autenticato"]== "U")
         header("Location: ..\utente.php");

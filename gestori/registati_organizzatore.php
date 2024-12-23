@@ -11,8 +11,11 @@ require_once ('gestoreCSV.php');
 </head>
 <body>
     <h1>REGISTRAZIONE ORGANIZZATORE</h1>
+    <?php
+    if (isset($_GET["messaggio"])) echo $_GET["messaggio"];
+    ?>
 
-    <form action="/submit-form" method="GET">
+    <form action="gestoreMail.php" method="GET">
 
         <label>Nome Organizzatore:</label>
         <br>
@@ -47,7 +50,7 @@ require_once ('gestoreCSV.php');
         <br>
         <textarea name="descrizione-organizzatore" rows="5" cols="30" required></textarea>
         <br><br>
-        <button type="submit">INVIA RICHIESTA</button>
+        <button >INVIA RICHIESTA</button>
     </form>
     
 </body>

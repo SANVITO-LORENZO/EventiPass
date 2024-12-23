@@ -1,2 +1,0 @@
-EventiPass è una piattaforma di ticketing che permette agli utenti di acquistare biglietti per eventi e agli organizzatori di creare, gestire e monitorare i propri eventi. Gli amministratori gestiscono utenti, eventi e transazioni, offrendo una soluzione semplice e sicura per tutti i partecipanti.
-modifica!
