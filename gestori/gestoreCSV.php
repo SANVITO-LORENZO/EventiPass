@@ -22,45 +22,15 @@ class GestoreCSV {
         return $vett_utenti;
     }
 
-    public function getOpzioni($filename, $ruolo) {
-        $opzioni = [];
+    public function ottieni_da_file($filename) {
+        $vett_informazioni = [];
         if (file_exists($filename)) {
             $contenuto = file_get_contents($filename);
-            $righe = explode("\r\n", $contenuto);
-
-            foreach ($righe as $riga) {
-                if (!empty($riga)) {
-                    $campi = explode(";", $riga);
-                    if (count($campi) == 2) {
-
-                        if ($campi[1] == $ruolo || $campi[1] == 'b') {
-                            $opzioni[] = $campi[0];
-                        }
-                    }
-                }
-            }
+            $vett_informazioni = explode("\r\n", $contenuto);
         } else {
             throw new Exception("File non trovato: " . $filename);
         }
-        return $opzioni;
-    }
-
-
-    public function aggiornaRuolo($filename, $username, $nuovo_ruolo) {
-        $contenuto = file_get_contents($filename);
-        $righe = explode("\r\n", $contenuto);
-        $nuovo_contenuto = "";
-
-        foreach ($righe as $riga) {
-            if (!empty($riga)) {
-                $campi = explode(";", $riga);
-                if ($campi[0] == $username) {
-                    $campi[1] = $nuovo_ruolo;
-                }
-                $nuovo_contenuto .= implode(";", $campi) . "\r\n";
-            }
-        }
-        file_put_contents($filename, $nuovo_contenuto);
+        return $vett_informazioni;
     }
 }
 ?>

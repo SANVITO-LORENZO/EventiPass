@@ -14,14 +14,14 @@ if (!isset($_SESSION)) session_start();
 
     <?php
     if (isset($_SESSION["autenticato"])) {
-        header("Location: indirizzamento.php");  
+        header("Location: gestori/indirizzamento.php");  
         exit;
     }
 
     if (isset($_GET["messaggio"])) echo $_GET["messaggio"];
     ?>
 
-    <form action="gestori\gestoreLogin.php" method="GET">
+    <form action="gestori/gestoreLogin.php" method="GET">
         Nome: <input type="text" name="nome" required>
         <br>
         Password: <input type="password" name="password" required>
@@ -29,10 +29,10 @@ if (!isset($_SESSION)) session_start();
         <button>EFFETTUA IL LOGIN</button>
     </form>
 
-    <form action="registati_organizzatore.php">
+    <form action="gestori/registati_organizzatore.php">
         <button>REGISTRA ORGANIZZATORE</button>
     </form>
-    <form action="registati_utente.php">
+    <form action="gestori/registati_utente.php">
         <button>REGISTRA UTENTE</button>
     </form>
 </body>
