@@ -42,9 +42,9 @@ class GestoreMail {
                  . "Descrizione Organizzatore: $descrizione\n";
         $headers = "From: no-reply@tuosito.com";
 
-        if (!mail($to, $subject, $message, $headers)) {
-            die("Errore: Non è stato possibile inviare l'email.");
-        }
+        //if (!mail($to, $subject, $message, $headers)) {
+        //    die("Errore: Non è stato possibile inviare l'email.");->serve connettersi al server SMTP configurato per inviare email
+        //}
 
         echo "Richiesta inviata con successo e email inviata all'amministratore!";
     }

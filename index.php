@@ -29,10 +29,10 @@ if (!isset($_SESSION)) session_start();
         <button>EFFETTUA IL LOGIN</button>
     </form>
 
-    <form action="gestori/registati_organizzatore.php">
+    <form action="gestori/registrati_organizzatore.php">
         <button>REGISTRA ORGANIZZATORE</button>
     </form>
-    <form action="gestori/registati_utente.php">
+    <form action="gestori/registrati_utente.php">
         <button>REGISTRA UTENTE</button>
     </form>
 </body>

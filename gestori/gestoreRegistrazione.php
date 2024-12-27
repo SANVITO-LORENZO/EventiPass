@@ -9,12 +9,12 @@ $password = $_GET['password'];
 $ruolo = $_GET['ruolo'];
 
 if (empty($nome) || empty($password) || empty($ruolo)) {
-    header("Location: registrati.php?messaggio=Compila tutti i campi.");
+    header("Location: ..\registrati.php?messaggio=Compila tutti i campi.");
     exit();
 }
 
 
-$users_file = "documenti\login.csv";
+$users_file = "..\documenti\login.csv";
 $contenuto = file_get_contents($users_file);
 $righe = explode("\r\n", $contenuto);
 
@@ -22,7 +22,7 @@ foreach ($righe as $riga) {
     if (!empty($riga)) {
         $campi = explode(";", $riga);
         if ($campi[0] === $nome) {
-            header("Location: registrati.php?messaggio=Nome utente già esistente.");
+            header("Location: ..\registrati.php?messaggio=Nome utente già esistente.");
             exit();
         }
     }
@@ -35,6 +35,6 @@ if ($contenuto) {
 } else {
     file_put_contents($users_file, $nuovo_utente, FILE_APPEND);
 }
-header("Location: index.php?messaggio=Registrazione completata con successo.");
+header("Location: ..\index.php?messaggio=Registrazione completata con successo.");
 exit();
 ?>
