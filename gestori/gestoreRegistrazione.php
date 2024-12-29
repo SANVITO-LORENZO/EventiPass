@@ -1,4 +1,7 @@
 <?php
+
+if(!isset($_SESSION))session_start();
+
 if (!isset($_GET['nome']) || !isset($_GET['password']) || !isset($_GET['ruolo'])) {
     header("Location: registrati.php?messaggio=Errore nei dati inviati.");
     exit();
@@ -9,7 +12,7 @@ $password = $_GET['password'];
 $ruolo = $_GET['ruolo'];
 
 if (empty($nome) || empty($password) || empty($ruolo)) {
-    header("Location: ..\registrati.php?messaggio=Compila tutti i campi.");
+    header("Location: ../registrati.php?messaggio=Compila tutti i campi.");
     exit();
 }
 
@@ -22,7 +25,7 @@ foreach ($righe as $riga) {
     if (!empty($riga)) {
         $campi = explode(";", $riga);
         if ($campi[0] === $nome) {
-            header("Location: ..\registrati.php?messaggio=Nome utente già esistente.");
+            header("Location: ../registrati.php?messaggio=Nome utente già esistente.");
             exit();
         }
     }

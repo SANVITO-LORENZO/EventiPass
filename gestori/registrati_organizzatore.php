@@ -15,26 +15,15 @@ require_once ('gestoreCSV.php');
     if (isset($_GET["messaggio"])) echo $_GET["messaggio"];
     ?>
 
-    <form action="gestoreMail.php" method="GET">
+    <form action="gestoreOrganizzatore.php" method="GET">
 
-        <label>Nome Organizzatore:</label>
+        <label>Nome:</label>
         <br>
         <input type="text" name="nome-organizzatore" required>
         <br><br>
-        <label>Tipologia di Eventi:</label>
+        <label>Pass:</label>
         <br>
-        <select name="tipologia-eventi" required>
-        <?php
-            $gestoreCSV = new GestoreCSV();
-            $tipologie = $gestoreCSV->ottieni_da_file("../documenti/tipologie.csv");
-            foreach ($tipologie as $tipologia) {
-                if (!empty($tipologia)) { 
-                    echo "<option value=\"$tipologia\">$tipologia</option>";
-                }
-            }
-
-        ?>
-        </select>
+        <input type="text" name="pass-organizzatore" required>
         <br><br>
         <label for="sede">Sede:</label>
         <br>
@@ -45,10 +34,6 @@ require_once ('gestoreCSV.php');
         <br><br>
         <label for="mail">Mail:</label><br>
         <input type="email" name="mail" required>
-        <br><br>
-        <label >Descrizione :</label>
-        <br>
-        <textarea name="descrizione-organizzatore" rows="5" cols="30" required></textarea>
         <br><br>
         <button >INVIA RICHIESTA</button>
     </form>
