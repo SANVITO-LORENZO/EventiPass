@@ -18,15 +18,12 @@
         Password: <input type="password" name="password" required>
         <br>
         Ruolo:
-        <select name="ruolo" required>
-            <option value="utente">utente</option>
+        <select name="ruolo"  required >
+            <option value="U" selected>utente</option>
         </select>
         <br>
         <button>REGISTRATI</button>
     </form>
 
-    <form action="index.php">
-        <button>Torna al Login</button>
-    </form>
 </body>
 </html>

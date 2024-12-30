@@ -1,26 +1,7 @@
 <?php
-require_once(__DIR__."/..\classi\user.php");//user.php e conviene farla generica visto il nome generico
+require_once(__DIR__."/..\classi\user.php");
 
 class GestoreCSV {
-    public function generaUtenti($filename) {//in users questa funzione 
-        $vett_utenti = [];
-        if (file_exists($filename)) {
-            $contenuto = file_get_contents($filename);
-            $righe = explode("\r\n", $contenuto);
-
-            foreach ($righe as $riga) {
-                if (!empty($riga)) {
-                    $campi = explode(";", $riga);
-                    if (count($campi) == 3) {
-                        $vett_utenti[] = new Utente($campi[0], $campi[1], $campi[2]);
-                    }
-                }
-            }
-        } else {
-            throw new Exception("File non trovato: " . $filename);
-        }
-        return $vett_utenti;
-    }
 
     public function ottieni_da_file($filename) {
         $vett_informazioni = [];

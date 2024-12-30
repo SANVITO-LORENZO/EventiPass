@@ -1,44 +1,56 @@
 <?php
-
 require("gestoreCSV.php");
 
-    $gestore=new GestoreCSV();
+if (!isset($_SESSION)) session_start();
 
-        $dati = [
-            'nome-organizzatore' => $_GET['nome-organizzatore'],
-            'pass-organizzatore' => $_GET['pass-organizzatore'],
-            'sede' => $_GET['sede'],
-            'stato' => $_GET['stato'],
-            'mail' => $_GET['mail'],
-        ];
+if (
+    !isset($_GET['nome-organizzatore']) || 
+    !isset($_GET['pass-organizzatore']) || 
+    !isset($_GET['sede']) || 
+    !isset($_GET['stato']) || 
+    !isset($_GET['mail'])
+) {
+    header("Location: ..\index.php?messaggio=login non effettuato");
+    exit;
+}
+
+if (
+    empty($_GET['nome-organizzatore']) || 
+    empty($_GET['pass-organizzatore']) || 
+    empty($_GET['sede']) || 
+    empty($_GET['stato']) || 
+    empty($_GET['mail'])
+) {
+    header("Location: ..\index.php?messaggio=login non effettuato");
+    exit;
+}
          
-        $nome_organizzatore = $dati['nome-organizzatore'];
-        $pass_organizzatore = $dati['pass-organizzatore'];
-        $sede = $dati['sede'];
-        $stato = $dati['stato'];
-        $mail = $dati['mail'];
+$nome_organizzatore = $_GET['nome-organizzatore'];
+$pass_organizzatore = $_GET['pass-organizzatore'];
+$sede = $_GET['sede'];
+$stato = $_GET['stato'];
+$mail = $_GET['mail'];
         
-        // Riga da aggiungere al file CSV
-        $riga_csv = "$nome_organizzatore;$pass_organizzatore;$sede;$stato;$mail\r\n";
-        $file_csv = "../documenti/loginOrganizzatori.csv";
+$riga_csv = "$nome_organizzatore;$pass_organizzatore;$sede;$stato;$mail\r\n";
+$file_csv = "../documenti/richieste.csv";
 
        
-        $contenuto = file_get_contents($file_csv);
-        $righe = explode("\r\n", $contenuto);
+$contenuto = file_get_contents($file_csv);
+$righe = explode("\r\n", $contenuto);
 
-        foreach ($righe as $riga) {
-            if (!empty($riga)) {
-                $campi = explode(";", $riga);
-                if ($campi[0] === $nome_organizzatore) {
-                    header("Location:registrati_organizzatore.php?messaggio=Nome utente già esistente!");
-                    exit();
-                }
+foreach ($righe as $riga) {
+   if (!empty($riga)) {
+        $campi = explode(";", $riga);
+        if ($campi[0] === $nome_organizzatore) {
+            header("Location:registrati_organizzatore.php?messaggio=Nome utente già esistente!");
+            exit();
             }
         }
+}
 
+$gestore=new GestoreCSV();
+$gestore->salva_su_file_append($file_csv, $riga_csv);
 
-        $gestore->salva_su_file_append($file_csv, $riga_csv);
-
-        header("location: ../index.php?messaggio=organizzatore registrato! ");
+header("location: ../index.php?messaggio=RICHIESTA ORGANIZZATORE INVIATA! ");
      
 ?>

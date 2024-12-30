@@ -47,7 +47,7 @@ class Events {
             $righe[] = $event->toCsv();
         }
         $gCSV=new GestoreCSV();
-        $gCSV->salva_su_file("documenti/eventi.csv", $righe);
+        $gCSV->salva_su_file("../documenti/eventi.csv", $righe);
     }
 }
 ?>
