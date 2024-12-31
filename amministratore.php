@@ -1,9 +1,20 @@
 <?php
 require_once("gestori/gestoreCSV.php");
 
+//SE LA SESSIONE NON ESISTE SI CREA
 if(!isset($_SESSION)) session_start();
 
+//CONTROLLO SE LA VARIABILE DI SESSIONE AUTENTICATO E' ESISTENTE
 if(!isset($_SESSION["autenticato"])){
+    header("location: index.php?messaggio=errore");
+    exit;
+}
+
+//A -->  AMMINISTRATORE
+//O -->  ORGANIZZATORE
+//U -->  UTENTE
+//CONTROLLO SE AUTENTICATO NON CORRISPONDE AD A MANDO A PAGINA INDEX
+if($_SESSION["autenticato"]!="A"){
     header("location: index.php?messaggio=errore");
     exit;
 }
@@ -60,23 +71,26 @@ if(!isset($_SESSION["autenticato"])){
             $gestore = new GestoreCSV();
             $dati = $gestore->ottieni_da_file($file);
 
+            //CREAZIONE DELLE RIGHE DELLA TABELLA NELLE ULTIME DUE COLONNE DUE BOTTONI UNO PER ACCETTARE UNO PER RIFIUTARE
             foreach ($dati as $linea) {
                 if (!empty($linea)) {
                     $campi = explode(";", $linea);
                     if (count($campi) >= 5) {
-                        list($nome, $password, $sede, $stato, $mail) = $campi;
+
                         echo "<tr>";
-                        echo "<td>" . htmlspecialchars($nome) . "</td>";
-                        echo "<td>" . htmlspecialchars($sede) . "</td>";
-                        echo "<td>" . htmlspecialchars($stato) . "</td>";
-                        echo "<td>" . htmlspecialchars($mail) . "</td>";
+                        echo "<td>" . htmlspecialchars($campi[0]) . "</td>";
+                        echo "<td>" . htmlspecialchars($campi[2]) . "</td>";
+                        echo "<td>" . htmlspecialchars($campi[3]) . "</td>";
+                        echo "<td>" . htmlspecialchars($campi[4]) . "</td>";
+
+                        //CREAZIONE DEI BOTTONI CON DEI VALORI NASCOSTI CHE SI PASSERANNO TRAMITE METODO GET
                         echo "<td><form action='gestori/accetta_rifiuta_richiesta.php' method='GET'>
-                                    <input type='hidden' name='name' value='" . htmlspecialchars($nome) . "'>
+                                    <input type='hidden' name='name' value='" . htmlspecialchars($campi[0]) . "'>
                                     <input type='hidden' name='azione' value='accetta'>
                                     <button type='submit'>Accetta</button>
                                   </form></td>";
                         echo "<td><form action='gestori/accetta_rifiuta_richiesta.php' method='GET'>
-                                    <input type='hidden' name='name' value='" . htmlspecialchars($nome) . "'>
+                                    <input type='hidden' name='name' value='" . htmlspecialchars($campi[0]) . "'>
                                     <input type='hidden' name='azione' value='rifiuta'>
                                     <button type='submit'>Rifiuta</button>
                                   </form></td>";
@@ -89,7 +103,8 @@ if(!isset($_SESSION["autenticato"])){
         }
         ?>
     </table>
-
+    
+    <!-- BOTTONE CHE GESTISCE IL LOGOUT -->
     <form action="gestori\gestoreLogout.php">
         <button>LOGOUT</button>
     </form>

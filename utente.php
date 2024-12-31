@@ -1,9 +1,20 @@
 <?php
-
 require_once("classi/events.php");
+
+//SE LA SESSIONE NON ESISTE SI CREA
 if(!isset($_SESSION))session_start();
 
+//CONTROLLO SE LA VARIABILE DI SESSIONE AUTENTICATO E' ESISTENTE
 if(!isset($_SESSION["autenticato"])){
+    header("location: index.php?messaggio=errore");
+    exit;
+}
+
+//A -->  AMMINISTRATORE
+//O -->  ORGANIZZATORE
+//U -->  UTENTE
+//CONTROLLO SE AUTENTICATO NON CORRISPONDE AD U MANDO A PAGINA INDEX
+if($_SESSION["autenticato"]!="U"){
     header("location: index.php?messaggio=errore");
     exit;
 }
@@ -39,6 +50,7 @@ if(!isset($_SESSION["autenticato"])){
         <button>Area personale</button>
     </form>
     
+    <!-- BOTTONE CHE GESTISCE IL LOGOUT -->
     <form action="gestori\gestoreLogout.php">
         <button>LOGOUT</button>
     </form>
