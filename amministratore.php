@@ -71,12 +71,12 @@ if(!isset($_SESSION["autenticato"])){
                         echo "<td>" . htmlspecialchars($stato) . "</td>";
                         echo "<td>" . htmlspecialchars($mail) . "</td>";
                         echo "<td><form action='gestori/accetta_rifiuta_richiesta.php' method='GET'>
-                                    <input type='hidden' name='nome' value='" . htmlspecialchars($nome) . "'>
+                                    <input type='hidden' name='name' value='" . htmlspecialchars($nome) . "'>
                                     <input type='hidden' name='azione' value='accetta'>
                                     <button type='submit'>Accetta</button>
                                   </form></td>";
                         echo "<td><form action='gestori/accetta_rifiuta_richiesta.php' method='GET'>
-                                    <input type='hidden' name='nome' value='" . htmlspecialchars($nome) . "'>
+                                    <input type='hidden' name='name' value='" . htmlspecialchars($nome) . "'>
                                     <input type='hidden' name='azione' value='rifiuta'>
                                     <button type='submit'>Rifiuta</button>
                                   </form></td>";

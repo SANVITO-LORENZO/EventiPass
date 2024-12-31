@@ -26,7 +26,7 @@ if($risultato!="niente"){
     exit;
 }
 else{
-    header("Location: ..\index.php?messaggio=login non effettuato");
+    header("Location: ..\index.php?messaggio=login non effettuato...............");
     exit;
 }
 

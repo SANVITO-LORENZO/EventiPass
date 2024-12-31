@@ -12,14 +12,14 @@
     if (isset($_GET["messaggio"])) echo $_GET["messaggio"];
     ?>
 
-    <form action="gestoreRegistrazione.php" method="GET">
+    <form action="gestori\gestoreRegistrazione.php" method="GET">
         Nome: <input type="text" name="nome" required>
         <br>
         Password: <input type="password" name="password" required>
         <br>
         Ruolo:
         <select name="ruolo" required>
-            <option value="U" selected>utente</option>
+            <option value="studente">Studente</option>
         </select>
         <br>
         <button>REGISTRATI</button>

@@ -19,13 +19,13 @@ class Utenti {
     public function generaUtenti($filename) {
         $vett_utenti = [];
         if (file_exists($filename)) {
-            $contenuto = file_get_contents($filename);
-            $righe = explode("\r\n", $contenuto);
+            // Usa file() per leggere le righe in modo sicuro e compatibile
+            $righe = file($filename, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
             foreach ($righe as $riga) {
                 if (!empty($riga)) {
                     $campi = explode(";", $riga);
-                    if (count($campi) == 3) {
+                    if (count($campi) === 3) {
                         $vett_utenti[] = new Utente($campi[0], $campi[1], $campi[2]);
                     }
                 }
@@ -38,12 +38,10 @@ class Utenti {
 
     public function isPresente($nome, $password): string {
         foreach ($this->vett_utenti as $utente) {
-            if ($utente->getNome() == $nome && $utente->getPassword() == $password) {
+            if ($utente->getNome() === $nome && $utente->getPassword() === $password) {
                 return $utente->getRuolo();
             }
         }
         return "niente";
     }
-
 }
-?>

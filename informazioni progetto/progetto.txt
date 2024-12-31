@@ -27,7 +27,7 @@
 3-REGISTRATI ORGANIZZATORE      ----.> manda email dinotifica all'amministratore
 	
 	- NOME COMPAGNIA
-	- TIPOLOGIA DI EVENTI ( SELECT)
+	- TIPOLOGIA DI EVENTI ( SELECT) //DA VEDERE!!!!
 	- SEDE
 	- STATO
 	- MAIL
