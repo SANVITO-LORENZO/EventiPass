@@ -10,9 +10,9 @@ require_once(__DIR__."/../classi/events.php");
 </head>
 <body>
     <?php
-        $e=new Events();
+        $e=new Eventi();
   
-        $event=$e->getByNome($_GET["NomeEvento"]);
+        $event=$e->ottieniPerNome($_GET["NomeEvento"]);
         echo $event->toCsv();
     ?>
 </body>

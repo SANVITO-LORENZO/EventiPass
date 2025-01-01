@@ -24,33 +24,8 @@ if($_SESSION["autenticato"]!="A"){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="grafica/amministratore.css">
     <title>Document</title>
-    <style>
-        table {
-            width: 0%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-
-        table, th, td {
-            border: 1px solid black;
-        }
-
-        th, td {
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        button {
-            padding: 5px 10px;
-            margin: 2px;
-            cursor: pointer;
-        }
-    </style>
 </head>
 <body>
     <h1> PAGINA AMMINISTRATORE</h1>    

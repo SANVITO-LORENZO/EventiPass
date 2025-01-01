@@ -35,8 +35,8 @@ if($_SESSION["autenticato"]!="U"){
         ?>
     </h2>
     <?php
-        $file_eventi=new Events();
-        foreach($file_eventi->getEventsByTipologia("") as $eventi){
+        $file_eventi=new Eventi();
+        foreach($file_eventi->ottieniEventiPerTipologia("") as $eventi){
             echo "<div>";
             echo "Creatore: ".$eventi->getCreatore()."<br>";
             echo "Nome: ".$eventi->getNome()."<br>";
