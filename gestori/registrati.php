@@ -9,10 +9,11 @@
     <h1>REGISTRAZIONE NUOVO UTENTE</h1>
 
     <?php
-    if (isset($_GET["messaggio"])) echo $_GET["messaggio"];
+    //SE C'E' UN MESSAGGIO QUESTO VIENE VISUALIZZATO
+    if (isset($_POST["messaggio"])) echo $_POST["messaggio"];
     ?>
 
-    <form action="gestori\gestoreRegistrazione.php" method="GET">
+    <form action="gestori\gestoreRegistrazione.php" method="POST">
         Nome: <input type="text" name="nome" required>
         <br>
         Password: <input type="password" name="password" required>

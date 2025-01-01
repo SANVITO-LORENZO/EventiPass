@@ -27,7 +27,13 @@ if($_SESSION["autenticato"]!="U"){
     <title>Document</title>
 </head>
 <body>
-    <h1>UTENTE BASE</h1>
+    <h1>PAGINA UTENTE</h1>
+    <h2>
+        <?php
+        //MOSTRA IL NOME DI CHI E LOGGATO
+        echo 'benvenuto  '.$_SESSION["username"];
+        ?>
+    </h2>
     <?php
         $file_eventi=new Events();
         foreach($file_eventi->getEventsByTipologia("") as $eventi){

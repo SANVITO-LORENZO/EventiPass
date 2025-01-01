@@ -1,5 +1,5 @@
 <?php
-    require_once(__DIR__."/../classi/events.php");
+require_once(__DIR__."/../classi/events.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">

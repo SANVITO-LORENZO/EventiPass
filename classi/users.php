@@ -16,16 +16,23 @@ class Utenti {
         }
     }
 
+    //DATO UN FILE GENERO UN VETTORE DI UTENTI
     public function generaUtenti($filename) {
+        //VETTORE VUOTO
         $vett_utenti = [];
+        //CONTROLLO SE FILE ESISTE
         if (file_exists($filename)) {
-            // Usa file() per leggere le righe in modo sicuro e compatibile
+            //SEPARA TUTTE LE FìRIGHE DEL FILE IGNORANDO LE RIGHE VUOTE E I CARATTERI \N E \R (CARATTERI DI FINE RIGA)
             $righe = file($filename, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-
+            //PER OGNI RIGA
             foreach ($righe as $riga) {
+                //CONTROLLO SE E' VUOTA
                 if (!empty($riga)) {
+                    //DIVIDO PER IL ;
                     $campi = explode(";", $riga);
-                    if (count($campi) === 3) {
+                    //CONTROLLO CHE IL NUMERO DEI CAMPI SIA UGUALE A 3
+                    if (count($campi) == 3) {
+                        //AGGIUNGO UN NUOVO UTENTE
                         $vett_utenti[] = new Utente($campi[0], $campi[1], $campi[2]);
                     }
                 }
@@ -36,6 +43,7 @@ class Utenti {
         return $vett_utenti;
     }
 
+    //DATO UN NOME E LA PASSWORD CONTROLLO SE PRESENTE E NEL CASO RESTITUISCO IL RUOLO ALTRIMENTI NULLA
     public function isPresente($nome, $password): string {
         foreach ($this->vett_utenti as $utente) {
             if ($utente->getNome() === $nome && $utente->getPassword() === $password) {

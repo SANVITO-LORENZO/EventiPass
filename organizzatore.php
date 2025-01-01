@@ -27,8 +27,13 @@ if($_SESSION["autenticato"]!="O"){
     <title>Document</title>
 </head>
 <body>
-    <h1>organizzatore</h1>
-
+    <h1>PAGINA ORGANIZZATORE</h1>
+    <h2>
+        <?php
+        //MOSTRA IL NOME DI CHI E LOGGATO
+        echo 'benvenuto  '.$_SESSION["username"];
+        ?>
+    </h2>
     <!-- BOTTONE CHE GESTISCE IL LOGOUT -->
     <form action="gestori\gestoreLogout.php">
         <button>LOGOUT</button>

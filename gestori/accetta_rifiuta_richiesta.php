@@ -1,16 +1,25 @@
 <?php
 require_once("gestoreCSV.php");
 
+//SE LA SESSIONE NON ESISTE SI CREA
 if(!isset($_SESSION)) session_start();
 
-$nome = isset($_GET['name']) ? $_GET['name'] : '';
-$azione = isset($_GET['azione']) ? $_GET['azione'] : '';
+$nome = $_POST['name'];
+$azione = $_POST['azione'];
 
+//CONTROLLO SE SETTATE
+if (!isset($_POST['name']) || !isset($_POST['azione'])) {
+    header("Location: ../index.php?messaggio=Errore con comando amministratore");
+    exit();
+}
+
+//CONTROLLO CHE NON SIANO VUOTE
 if (empty($nome) || empty($azione)) {
     header("Location: ../index.php?messaggio=Errore con comando amministratore");
     exit();
 }
 
+//PATH DEI FILE
 $fileRichieste = '../documenti/richieste.csv';
 $fileOrganizzatori = '../documenti/users/organizzatori.csv';
 $fileLogin = '../documenti/login.csv';
@@ -18,53 +27,61 @@ $fileLogin = '../documenti/login.csv';
 try {
     $gestore = new GestoreCSV();
 
-    // Ottieni le righe dal file delle richieste
+    // OTTIENE LE RIGHE DAL FILE
     $righeRichieste = $gestore->ottieni_da_file($fileRichieste);
 
     $righeAggiornate = [];
-    $rigaSpostata = null;
+    $tmp = null;
     $password = null;
 
+    //PER OGNI RIGA
     foreach ($righeRichieste as $riga) {
+        //CONTROLLO SE NON E' VUOTA
+
         if (!empty($riga)) {
+            //DIVIDO LA RIGA PER ;
             $campi = explode(";", $riga);
-            if (count($campi) >= 5 && $campi[0] === $nome) {
-                // Trovata la riga corrispondente
-                $rigaSpostata = $riga;
-                $password = $campi[1]; // Secondo campo è la password
+
+            //SE I CAMPI SONO 5 O PIU' E IL PRIMO CAMPO CORRISPONDE AL NOME
+            if (count($campi) >= 5 && $campi[0] == $nome) {
+
+                //TROVATA LA RIGA CORRISPONDENTE
+                $tmp = $riga;
+                //LA PASSWORD CORRISPONDE AL SECONDO CAMPO
+                $password = $campi[1]; 
+
             } else {
+                //ALTRIMENTI AGGIUNGO A VETT LA RIGA
                 $righeAggiornate[] = $riga;
             }
         }
     }
 
-    if ($rigaSpostata) {
-        if ($azione === 'accetta') {
-            // Aggiungi la riga al file degli organizzatori
-            if (!file_exists($fileOrganizzatori)) {
-                file_put_contents($fileOrganizzatori, ""); // Crea il file se non esiste
-            }
-            file_put_contents($fileOrganizzatori, $rigaSpostata . "\n", FILE_APPEND);
+    // SE VARIABILE NON E' NULLA
+    if ($tmp) {
+        //SE SI VUOLE ACCETTARE
+        if ($azione == 'accetta') {
+            //AGGIUNGO AL FILEORGANIZZATORI LA RIGA
+            file_put_contents($fileOrganizzatori, $tmp . "\n", FILE_APPEND);
 
-            // Aggiungi il nome, la password e "O" al file login.csv
+            //CREO STRINGA DA AGGIUNGERE AL FILE DI LOGIN
             $nuovaRigaLogin = "$nome;$password;O\n";
 
-            // Verifica se il file login.csv esiste
-            if (!file_exists($fileLogin)) {
-                file_put_contents($fileLogin, $nuovaRigaLogin); // Crea il file con la nuova riga
-            } else {
-                // Leggi il contenuto esistente, separa correttamente e aggiungi la nuova riga
-                $contenutoLogin = file_get_contents($fileLogin);
-                $contenutoLogin .= $nuovaRigaLogin; // Aggiungi la nuova riga separata correttamente
-                file_put_contents($fileLogin, $contenutoLogin);
-            }
+            //PRENDO INFORMAZIONI DA FILE DI LOGIN
+            $contenutoLogin = file_get_contents($fileLogin);
+            //COME SE FOSSE += MA CON LE STRINGHE QUINDI .=
+            $contenutoLogin .= $nuovaRigaLogin; 
+            //AGGIUNGO A FILE
+            file_put_contents($fileLogin, $contenutoLogin);
+            
         }
     }
+    //AGGIORNO IL FILE DELLE RICHIESTE
     file_put_contents($fileRichieste, implode("\n", $righeAggiornate));
 
-    echo "<h1>Azione completata</h1>";
-    echo "<p>La richiesta di " . htmlspecialchars($nome) . " è stata " . ($azione === 'accetta' ? 'accettata e aggiunta agli organizzatori e login.csv' : 'rifiutata e rimossa dalle richieste') . ".</p>";
-    echo "<a href='../amministratore.php'>Torna alla pagina amministratore</a>";
+    //TORNO ALLA PAGINA DELL'AMMINISTRATORE
+    header("Location: ../index.php");
+    exit;
 
 } catch (Exception $e) {
     die("Errore: " . htmlspecialchars($e->getMessage()));

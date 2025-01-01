@@ -1,5 +1,8 @@
 <?php
 require_once ('gestoreCSV.php');
+
+//SE LA SESSIONE NON ESISTE SI CREA
+if(!isset($_SESSION))session_start();
 ?>
 
 <!DOCTYPE html>
@@ -11,11 +14,14 @@ require_once ('gestoreCSV.php');
 </head>
 <body>
     <h1>REGISTRAZIONE ORGANIZZATORE</h1>
+
     <?php
+    //SE C'E' UN MESSAGGIO QUESTO VIENE VISUALIZZATO
     if (isset($_GET["messaggio"])) echo $_GET["messaggio"];
     ?>
 
-    <form action="gestoreOrganizzatore.php" method="GET">
+    <!-- MANDA A GESTOREORGANIZZATORE TUTTE LE INFORMAZIONI UTILI PER LA RICHIESTA DELL'ORGANIZZATORE -->
+    <form action="gestoreOrganizzatore.php" method="POST">
 
         <label>Nome:</label>
         <br>

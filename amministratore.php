@@ -53,8 +53,15 @@ if($_SESSION["autenticato"]!="A"){
     </style>
 </head>
 <body>
-    <h1>Amministratore</h1>
-
+    <h1> PAGINA AMMINISTRATORE</h1>    
+    <h2>
+        <?php
+        //MOSTRA IL NOME DI CHI E LOGGATO
+        echo 'benvenuto  '.$_SESSION["username"];
+        //SE C'E' UN MESSAGGIO QUESTO VIENE VISUALIZZATO
+        if (isset($_GET["messaggio"])) echo $_GET["messaggio"];
+        ?>
+    </h2>
     <h2>Richieste</h2>
     <table>
         <tr>
@@ -84,12 +91,12 @@ if($_SESSION["autenticato"]!="A"){
                         echo "<td>" . htmlspecialchars($campi[4]) . "</td>";
 
                         //CREAZIONE DEI BOTTONI CON DEI VALORI NASCOSTI CHE SI PASSERANNO TRAMITE METODO GET
-                        echo "<td><form action='gestori/accetta_rifiuta_richiesta.php' method='GET'>
+                        echo "<td><form action='gestori/accetta_rifiuta_richiesta.php' method='POST'>
                                     <input type='hidden' name='name' value='" . htmlspecialchars($campi[0]) . "'>
                                     <input type='hidden' name='azione' value='accetta'>
                                     <button type='submit'>Accetta</button>
                                   </form></td>";
-                        echo "<td><form action='gestori/accetta_rifiuta_richiesta.php' method='GET'>
+                        echo "<td><form action='gestori/accetta_rifiuta_richiesta.php' method='POST'>
                                     <input type='hidden' name='name' value='" . htmlspecialchars($campi[0]) . "'>
                                     <input type='hidden' name='azione' value='rifiuta'>
                                     <button type='submit'>Rifiuta</button>

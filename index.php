@@ -1,4 +1,5 @@
 <?php
+//SE LA SESSIONE NON ESISTE SI CREA
 if (!isset($_SESSION)) session_start();
 ?>
 
@@ -13,15 +14,18 @@ if (!isset($_SESSION)) session_start();
     <h1>PAGINA DI LOGIN</h1>
 
     <?php
+    //SE GIA AUTENTICATO VA A INDIRIZZAMENTO
     if (isset($_SESSION["autenticato"])) {
         header("Location: gestori/indirizzamento.php");  
         exit;
     }
 
+    //SE C'E' UN MESSAGGIO QUESTO VIENE VISUALIZZATO
     if (isset($_GET["messaggio"])) echo $_GET["messaggio"];
     ?>
 
-    <form action="gestori/gestoreLogin.php" method="GET">
+    <!-- MANDA A GESTORE LOGIN NOME E PASSWORD INSERITI -->
+    <form action="gestori/gestoreLogin.php" method="POST">
         Nome: <input type="text" name="nome" required>
         <br>
         Password: <input type="password" name="password" required>
@@ -29,9 +33,12 @@ if (!isset($_SESSION)) session_start();
         <button>EFFETTUA IL LOGIN</button>
     </form>
 
+    <!-- MANDA A PAGINA PER LA REGISTRAZIONE DELL'ORGANIZZATORE -->
     <form action="gestori/registrati_organizzatore.php">
         <button>REGISTRA ORGANIZZATORE</button>
     </form>
+
+    <!-- MANDA A PAGINA PER LA REGISTRAZIONE DELL'UTENTE -->
     <form action="gestori/registrati_utente.php">
         <button>REGISTRA UTENTE</button>
     </form>
