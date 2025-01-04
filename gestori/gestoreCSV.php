@@ -15,6 +15,31 @@ class GestoreCSV {
         return $vett_informazioni;
     }
 
+    public function campiNonEsistenti($nome,$cf,$mail,$numero){
+        $utenti=$this->ottieni_da_file(__DIR__."/../documenti/users/utenti.csv");
+        $organizzatori=$this->ottieni_da_file(__DIR__."/../documenti/users/organizzatori.csv");
+        $admin=$this->ottieni_da_file(__DIR__."/../documenti/users/admin.csv");
+        foreach($utenti as $u){
+            $campi=explode(";",$u);
+            if($campi[0]==$nome || $campi[3]==$cf || $campi[4]==$mail||$campi[6]==$numero){
+                return false;
+            }
+        }
+        foreach($organizzatori as $u){
+            $campi=explode(";",$u);
+            if($campi[0]==$nome ||  $campi[4]==$mail){
+                return false;
+            }
+        }
+        foreach($admin as $u){
+            $campi=explode(";",$u);
+            if($campi[0]==$nome ){
+                return false;
+            }
+        }
+        return true;
+    }
+
     //SALVA SUL FILE NON IN APPEND
     public function salva_su_file($filename, $righe): void {
         $contenuto = implode("\r\n", $righe);

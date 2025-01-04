@@ -50,7 +50,7 @@
 	
 	- login
 	- tabella in cui vede i suoi eventi ( puo toglierlo)
-	- pagina aggiungi evento -> nome/tipologia/data inizio e fine / luogo/ descrizione/ prezzo	
+	- pagina aggiungi evento -> id/nome/tipologia/data inizio e fine / luogo/ descrizione/ prezzo	
 	
 ---------------------------------------------------------------------------
 

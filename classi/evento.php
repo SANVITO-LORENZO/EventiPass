@@ -1,5 +1,6 @@
 <?php
 class Evento{
+    private $id;
     private $creatore;
     private $nome;
     private $tipologia;
@@ -10,7 +11,8 @@ class Evento{
     private $prezzo;
     
 
-    public function __construct($creatore, $nome, $tipologia, $data_inizio, $data_fine, $luogo, $descrizione, $prezzo) {
+    public function __construct($id,$creatore, $nome, $tipologia, $data_inizio, $data_fine, $luogo, $descrizione, $prezzo) {
+        $this->id = $id;
         $this->creatore = $creatore;
         $this->nome = $nome;
         $this->tipologia = $tipologia;
@@ -19,6 +21,9 @@ class Evento{
         $this->luogo = $luogo;
         $this->descrizione = $descrizione;
         $this->prezzo = $prezzo;
+    }
+    public function getId() {
+        return $this->id;
     }
     public function getCreatore() {
         return $this->creatore;
@@ -45,7 +50,7 @@ class Evento{
         return $this->prezzo;
     }
     public function toCsv() {
-    return $this->creatore.";".$this->nome.";".$this->tipologia.";".$this->data_inizio.";".$this->data_fine.";".$this->luogo.";".$this->descrizione.";".$this->prezzo;
+    return $this->id.";".$this->creatore.";".$this->nome.";".$this->tipologia.";".$this->data_inizio.";".$this->data_fine.";".$this->luogo.";".$this->descrizione.";".$this->prezzo;
     }
 }
 ?>

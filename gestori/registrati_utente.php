@@ -20,6 +20,22 @@ if(!isset($_SESSION))session_start();
     <form action="gestoreRegistrazione.php" method="POST">
         Nome: <input type="text" name="nome" required>
         <br>
+        COGNOME: <input type="text" name="cognome" required>
+        <br>
+        ETA: <input type="number" name="eta" required>
+        <br>
+        CF: <input type="text" name="cf" required>
+        <br>
+        MAIL: <input type="email" name="mail" required>
+        <br>
+        PREFISSI: <input type="text" name="prefissi" required>
+        <br>
+        NUMERO: <input type="text" name="numero" required>
+        <br>
+        RESIDENZA: <input type="text" name="residenza" required>
+        <br>
+        CARTA: <input type="text" name="carta" required>
+        <br>
         Password: <input type="password" name="password" required>
         <br>
         Ruolo:
