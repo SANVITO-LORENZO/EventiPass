@@ -28,40 +28,56 @@ if ($_SESSION["autenticato"] != "O") {
         <?php
         //MOSTRA IL NOME DI CHI E' LOGGATO
         echo 'Benvenuto ' . $_SESSION["username"];
-        //SE C'E' UN MESSAGGIO QUESTO VIENE VISUALIZZATO
-        if (isset($_GET["messaggio"])) echo $_GET["messaggio"];
         ?>
     </h2>
+
+    <?php
+        //SE C'E' UN MESSAGGIO QUESTO VIENE VISUALIZZATO
+        if (isset($_GET["messaggio"])) echo $_GET["messaggio"];
+    ?>
 
     <!-- FORM PER CREARE NUOVO EVENTO -->
     <h3>Creazione Nuovo Evento</h3>
     <form action="gestori/creazione.php" method="POST">
-        Nome dell'evento:
-        <input type="text" id="nome" name="nome" required><br><br>
-
-        Tipologia dell'evento:<br>
-        <input type="text" id="tipologia" name="tipologia" required><br><br>
-
-        Data di inizio:<br>
-        <input type="datetime-local" id="data_inizio" name="data_inizio" required><br><br>
-
-        Data di fine:<br>
-        <input type="datetime-local" id="data_fine" name="data_fine" required><br><br>
-
-        Luogo:<br>
-        <input type="text" id="luogo" name="luogo" required><br><br>
-
-        Descrizione:<br>
-        <textarea id="descrizione" name="descrizione" required></textarea><br><br>
-
-        Prezzo:<br>
-        <input type="number" id="prezzo" name="prezzo" step="0.01" required><br><br>
-
-        <button type="submit">CREA EVENTO</button>
+        <table>
+            <tr>
+                <td><label for="nome">Nome dell'evento:</label></td>
+                <td><input type="text" id="nome" name="nome" required></td>
+            </tr>
+            <tr>
+                <td><label for="tipologia">Tipologia dell'evento:</label></td>
+                <td><input type="text" id="tipologia" name="tipologia" required></td>
+            </tr>
+            <tr>
+                <td><label for="data_inizio">Data di inizio:</label></td>
+                <td><input type="datetime-local" id="data_inizio" name="data_inizio" required></td>
+            </tr>
+            <tr>
+                <td><label for="data_fine">Data di fine:</label></td>
+                <td><input type="datetime-local" id="data_fine" name="data_fine" required></td>
+            </tr>
+            <tr>
+                <td><label for="luogo">Luogo:</label></td>
+                <td><input type="text" id="luogo" name="luogo" required></td>
+            </tr>
+            <tr>
+                <td><label for="descrizione">Descrizione:</label></td>
+                <td><textarea id="descrizione" name="descrizione" required></textarea></td>
+            </tr>
+            <tr>
+                <td><label for="prezzo">Prezzo:</label></td>
+                <td><input type="number" id="prezzo" name="prezzo" step="0.01" required></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <button type="submit">CREA EVENTO</button>
+                </td>
+            </tr>
+        </table>
     </form>
-
-        <!-- BOTTONE CHE GESTISCE IL LOGOUT -->
-        <form action="gestori/gestoreLogout.php" method="POST">
+    
+    <!-- BOTTONE CHE GESTISCE IL LOGOUT -->
+    <form action="gestori/gestoreLogout.php" method="POST">
         <button>LOGOUT</button>
     </form>
 </body>

@@ -1,0 +1,67 @@
+1-LOGIN
+
+	-UTENTE BASE
+	-ORGANIZZATORE
+	-AMMINISTRATORE (NOI DUE)
+-------------------------------------------------------------------------- TUTTO QUESTO DENTRO LA LOGIN
+2-REGISTRATI UTENTE
+	
+	- NOME
+	- COGNOME
+	- ETA (MAGGIORE 18)
+	- CF (CONTROLLO SE NON ESISTE DI GIA)
+	- MAIL ( CONTROLLO SE NON ESISTE DI GIA)
+	- PREFISSI (PRESI DA FILE)
+	- NUMERO	(CONTROLLO SE HA 10 NUMERI)		      
+	- RESIDENZA	      --> CITTA/ VIA / NUMERO / CAP	
+	- *CARTA (VEDIAMO POI) --> CVV / SCADENZA / NUMERO
+	
+	- USERNAME
+	- PASSWORD1
+	- PASSWORD2
+
+2.1 CONFERMA REGISTRAAZIONE
+
+	-ARRIVA EMAIL DI CONFERMA
+
+3-REGISTRATI ORGANIZZATORE      ----.> manda email dinotifica all'amministratore
+	
+	- NOME COMPAGNIA
+	- TIPOLOGIA DI EVENTI ( SELECT)
+	- SEDE
+	- STATO
+	- MAIL
+	- DESCRIZIONE ORGANIZZATORE 
+	-
+
+3.1 CONFERMA ACCETTAZIONE CON CREDENZIALI
+
+	-ARRIVA MAIL CON CREDENZIALI / RIFIUTO
+-------------------------------------------------------------------------- TUTTO QUESTO DENTRO LA LOGIN
+
+4 AMMINISTRATORE
+
+	- TABELLA CON RICHIESTE ( nome / accetta/ declina) {se si riesce si preme nome e si apre un altra pagina sennò tutto nella tabella}*
+	- ricerca utenti e organizzatori per trovare le varie informazioni
+
+----------------------------------------------------------------------------	
+
+5 ORGANIZZATORE
+	
+	- login
+	- tabella in cui vede i suoi eventi ( puo toglierlo)
+	- pagina aggiungi evento -> nome/tipologia/data inizio e fine / luogo/ descrizione/ prezzo	
+	
+---------------------------------------------------------------------------
+
+6 UTENTE
+	- login
+	- ricerca per tipologia
+	- vede tutti eventi
+	- icona per vedere informazioni e sotto tabella con storico acquisti divisa per eventi finiti e in corso (TOTALE SPESO)*
+	
+	
+
+	
+	
+	
