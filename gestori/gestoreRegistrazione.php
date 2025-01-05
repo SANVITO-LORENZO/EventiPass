@@ -24,14 +24,49 @@ $password = $_POST['password'];
 $ruolo = $_POST['ruolo'];
 $gestore=new GestoreCSV();
 
-//CONTROLLO CHE LE VARIABILI NON SONO VUOTE
-if (empty($nome) || empty($cognome) || empty($eta) ||empty($cf)||empty($mail)||empty($prefissi)
-    ||empty($numero)||empty($residenza)||empty($carta)||empty($password)||empty($ruolo)||$eta<18 
-    || strlen($numero)!=10||!$gestore->campiNonEsistenti($nome,$cf,$mail,$numero)){
-    header("Location: registrati_utente.php?messaggio=Compila tutti i campi.");
-    exit();
+
+// CONTROLLO NOME E COGNOME
+if (empty($nome) || !preg_match("/^[a-zA-Z0-9\s'-]+$/", $nome)) {
+    $messaggioErrore = "Nome non valido.";
+} elseif (empty($cognome) || !preg_match("/^[a-zA-Z0-9\s'-]+$/", $cognome)) {
+    $messaggioErrore = "Cognome non valido.";
 }
 
+// CONTROLLO ETA
+elseif ($eta < 18 || $eta > 120) {
+    $messaggioErrore = "Età non valida. Deve essere maggiore di 18 anni.";
+}
+
+// CONTROLLO ALMENO 16 CIFRE CODICE FISCALE
+elseif (strlen($cf) != 16 || !preg_match("/^[A-Z0-9]{16}$/", $cf)) {
+    $messaggioErrore = "Codice fiscale non valido.";
+}
+
+// CONTROLLO EMAIL
+elseif (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+    $messaggioErrore = "Email non valida.";
+}
+
+// CONTROLLO SE NUMERO HA ALMENO 10 CIFRE
+elseif (!preg_match("/^\d{10}$/", $numero)) {
+    $messaggioErrore = "Numero di telefono non valido. Deve contenere esattamente 10 cifre.";
+}
+
+// RCONTROLLO RESIDENZA
+elseif (empty($residenza)) {
+    $messaggioErrore = "Residenza non valida.";
+}
+
+// CONTROLLO SE NUMERO DELLA CARTA HA ALMENO 16 CIFRE
+elseif (!preg_match("/^\d{16}$/", $carta)) {
+    $messaggioErrore = "Numero di carta non valido. Deve contenere esattamente 16 cifre.";
+}
+
+//SE ERRORE PRESENTE
+if ($messaggioErrore) {
+    header("Location: ../index.php?messaggio=$messaggioErrore");
+    exit();
+}
 
 //DOCUMENTO DOVE SONO TENUTE TUTTE LE INFORMAZIONI DI LOGIN
 $fileLogin = "..\documenti\login.csv";

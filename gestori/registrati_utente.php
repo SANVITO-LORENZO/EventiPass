@@ -1,5 +1,6 @@
 <?php
 require_once(__DIR__."/../verificalogin.php");
+require_once(__DIR__."/gestoreCSV.php");
 verifica_sessione();
 ?>
 <!DOCTYPE html>
@@ -28,7 +29,16 @@ verifica_sessione();
         <br>
         MAIL: <input type="email" name="mail" required>
         <br>
-        PREFISSI: <input type="text" name="prefissi" required>
+        PREFISSI: 
+        <select  name="prefissi" required>
+            <?php
+                $gestore=new GestoreCSV();
+                $prefissi=$gestore->ottieni_da_file(__DIR__."/../documenti/prefissi.csv");
+                foreach($prefissi as $prefisso){
+                    echo "<option value='$prefisso'>$prefisso</option>";
+                }
+            ?>
+        </select>
         <br>
         NUMERO: <input type="text" name="numero" required>
         <br>
