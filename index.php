@@ -1,7 +1,7 @@
 <?php
+
 require_once(__DIR__."/verificalogin.php");
 verifica_sessione();
-redirect("sei gia loggato");
 ?>
 
 <!DOCTYPE html>

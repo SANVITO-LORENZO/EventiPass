@@ -37,17 +37,17 @@
                 $errore="?messaggio=".$errore;
             if($_SESSION["autenticato"]== "U")
             {
-                header("Location: /EventiPass-main/utente.php".$errore);
+                header("Location: ../utente.php".$errore);
                 exit;
             } 
             else if($_SESSION["autenticato"]== "O")
             {
-                header("Location: /EventiPass-main/organizzatore.php".$errore);
+                header("Location: ../organizzatore.php".$errore);
                 exit;
             }
             else if($_SESSION["autenticato"]== "A")
             {
-                header("Location: /EventiPass-main/amministratore.php".$errore);
+                header("Location: ../amministratore.php".$errore);
                 exit;
             }
         }

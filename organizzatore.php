@@ -1,6 +1,7 @@
 <?php
 require_once("gestori/gestoreCSV.php");
 require_once("verificalogin.php");
+
 //SE LA SESSIONE NON ESISTE SI CREA E VERIFICA LOGIN CON RUOLO CORRETTO
 verifica_login("O");
 

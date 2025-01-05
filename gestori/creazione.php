@@ -1,6 +1,5 @@
 <?php
 require_once('../classi/events.php');
-
 require_once(__DIR__."/../verificalogin.php");
 verifica_login("O");
 
