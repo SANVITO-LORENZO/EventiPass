@@ -30,14 +30,22 @@ verifica_sessione();
         <br>
         <input type="text" name="pass-organizzatore" required>
         <br><br>
-        <label for="sede">Sede:</label>
+        <label>Sede:</label>
         <br>
-        <input type="text" name="sede" required>
+        <select  name="sede" required>
+            <?php
+                $gestore=new GestoreCSV();
+                $tipologie=$gestore->ottieni_da_file(__DIR__."/../documenti/citta.csv");
+                foreach($tipologie as $tipologia){
+                    echo "<option value='$tipologia'>$tipologia</option>";
+                }
+            ?>
+        </select>
         <br><br>
-        <label for="stato">Stato:</label><br>
-        <input type="text" name="stato" required>
+        <label>Stato:</label><br>
+        <input type="text" name="stato" value="Italia" required disabled>
         <br><br>
-        <label for="mail">Mail:</label><br>
+        <label >Mail:</label><br>
         <input type="email" name="mail" required>
         <br><br>
         <button >INVIA RICHIESTA</button>

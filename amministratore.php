@@ -71,7 +71,57 @@ verifica_login("A");
         }
         ?>
     </table>
-    
+        <!-- TABELLA UTENTI-->
+        <h2>Utenti</h2>
+    <table border="1">
+        <tr>
+            <th>Nome</th>
+            <th>Visualizza</th>
+        </tr>
+        <?php
+        try {
+            $file_utenti = 'documenti/users/utenti.csv';
+            $utenti = $gestore->ottieni_da_file($file_utenti);
+            foreach ($utenti as $utente) {
+                $dati = explode(";", $utente);
+                echo "<tr>";
+                echo "<td>" . $dati[0] . "</td>";
+                echo "<td><form action='visualizza_utente.php' method='POST'>
+                        <input type='hidden' name='utente_nome' value='" . $dati[0]. "'>
+                        <button type='submit'>Visualizza</button>
+                      </form></td>";
+                echo "</tr>";
+            }
+        } catch (Exception $e) {
+        }
+        ?>
+    </table>
+
+    <!-- TABELLA ORGANIZZATORI -->
+    <h2>organizzatori</h2>
+    <table border="1">
+        <tr>
+            <th>Nome</th>
+            <th>Visualizza</th>
+        </tr>
+        <?php
+        try {
+            $file_organizzatori = 'documenti/users/organizzatori.csv'; 
+            $organizzatori = $gestore->ottieni_da_file($file_organizzatori);
+            foreach ($organizzatori as $organizzatore) {
+                $dati = explode(";", $organizzatore);
+                echo "<tr>";
+                echo "<td>" . $dati[0] . "</td>";
+                echo "<td><form action='visualizza_organizzatore.php' method='POST'>
+                        <input type='hidden' name='organizzatore_nome' value='" . $dati[0] . "'>
+                        <button type='submit'>Visualizza</button>
+                      </form></td>";
+                echo "</tr>";
+            }
+        } catch (Exception $e) {        }
+        ?>
+    </table>
+
     <!-- BOTTONE CHE GESTISCE IL LOGOUT -->
     <form action="gestori\gestoreLogout.php">
         <button>LOGOUT</button>

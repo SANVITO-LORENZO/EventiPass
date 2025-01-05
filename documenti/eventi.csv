@@ -1,6 +1,20 @@
-1;l2;festa1;altro;2024-01-06 16:26:00;2024-01-23 16:26:00;Mariano Comense;Festa;10
-2;ceci;ceci;teatro;2025-01-06 16:26:00;2025-01-23 16:26:00;dsvasb;dcasbtewd;15
-3;ceci;test;sport;2025-01-16 17:01:00;2025-02-07 17:01:00;dsvasb;dcsabfda;15
-4;ceci;test;cinema;2025-01-16 17:01:00;2025-01-29 17:01:00;dsvasb;dcsabfda;15
-5;ceci;test;fiere;2025-01-06 17:01:00;2025-01-22 17:01:00;dsvasb;dcsabfda;15
-6;ceci;vadcda;sport;2025-01-15 18:12:00;2025-01-16 18:12:00;vasd;xca;20
+1;organizzatore1;Concerto Rock;concerti;2025-01-05T18:00;2025-02-10T21:30;Milano;Concerto di musica rock;50
+2;organizzatore2;Spettacolo Comico;teatro;2025-02-15 20:30:00;2025-02-15 22:30:00;Roma;Serata di risate con comici famosi;30
+3;organizzatore1;Maratona della città;sport;2025-03-05T08:00;2025-03-05T14:00;Torino;Maratona cittadina annuale;2
+4;organizzatore2;Proiezione Avatar 3;cinema;2025-01-20 21:00:00;2025-01-20 23:45:00;Napoli;Film di fantascienza;12
+5;organizzatore1;Fiera del Libro;fiere;2025-04-01 10:00:00;2025-04-03 18:00:00;Bologna;Esposizione e vendita di libri;5
+6;organizzatore2;Mercatino dell'Artigianato;altro;2025-02-28 09:00:00;2025-02-28 19:00:00;Firenze;Mercato con prodotti artigianali locali;1
+7;organizzatore1;Concerto Jazz;concerti;2025-03-10 20:00:00;2025-03-10 22:00:00;Venezia;Concerto dal vivo di artisti jazz;40
+8;organizzatore2;Opera Lirica;teatro;2025-03-15 19:00:00;2025-03-15 22:00:00;Verona;Rappresentazione di opera classica;60
+9;organizzatore1;Torneo di Calcio;sport;2025-03-20 09:00:00;2025-03-20 18:00:00;Genova;Competizione sportiva tra squadre locali;10
+10;organizzatore2;Proiezione Vecchi Film;cinema;2025-02-22 15:00:00;2025-02-22 17:30:00;Palermo;Rassegna di cinema classico;8
+11;organizzatore1;Fiera dell'Automobile;fiere;2025-05-05 09:00:00;2025-05-10 18:00:00;Modena;Esposizione di veicoli moderni e d'epoca;20
+12;organizzatore2;Festival delle Culture;altro;2025-06-15 11:00:00;2025-06-15 23:00:00;Rimini;Eventi multiculturali e gastronomici;1
+13;organizzatore1;Concerto Pop;concerti;2025-02-25 20:30:00;2025-02-25 23:00:00;Bari;Performance di cantanti pop famosi;35
+14;organizzatore2;Musical Broadway;teatro;2025-03-30 19:30:00;2025-03-30 22:00:00;Torino;Adattamento di un famoso musical americano;70
+15;organizzatore1;Corsa Notturna;sport;2025-03-25 20:00:00;2025-03-25 23:00:00;Milano;Corsa a tema sotto le stelle;10
+16;organizzatore2;Proiezione Horror Night;cinema;2025-02-14 22:00:00;2025-02-15 01:00:00;Roma;Maratona di film horror;15
+17;organizzatore1;Fiera del Vino;fiere;2025-05-15 10:00:00;2025-05-17 19:00:00;Asti;Degustazione e vendita di vini;25
+18;organizzatore2;Conferenza Tecnologia;altro;2025-06-20 09:00:00;2025-06-20 18:00:00;Milano;Discussioni su innovazioni tecnologiche;50
+19;organizzatore1;Concerto Classico;concerti;2025-03-12 19:30:00;2025-03-12 22:00:00;Padova;Musica classica dal vivo;45
+20;organizzatore2;Spettacolo di Magia;teatro;2025-04-08 20:00:00;2025-04-08 22:00:00;Firenze;Performance di illusionisti;25

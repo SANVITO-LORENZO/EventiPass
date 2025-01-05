@@ -44,7 +44,6 @@ class GestoreCSV {
         print_r($righe);
         echo"<br>";
         $contenuto = implode("\r\n", $righe);
-        print_r($contenuto);
         echo"<br>";
         file_put_contents($filename, $contenuto);
     }
