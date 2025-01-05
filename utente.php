@@ -1,23 +1,10 @@
 <?php
 require_once("classi/events.php");
+require_once("gestori/gestoreCSV.php");
+require_once("verificalogin.php");
 
-//SE LA SESSIONE NON ESISTE SI CREA
-if(!isset($_SESSION))session_start();
-
-//CONTROLLO SE LA VARIABILE DI SESSIONE AUTENTICATO E' ESISTENTE
-if(!isset($_SESSION["autenticato"])){
-    header("location: index.php?messaggio=errore");
-    exit;
-}
-
-//A -->  AMMINISTRATORE
-//O -->  ORGANIZZATORE
-//U -->  UTENTE
-//CONTROLLO SE AUTENTICATO NON CORRISPONDE AD U MANDO A PAGINA INDEX
-if($_SESSION["autenticato"]!="U"){
-    header("location: index.php?messaggio=errore");
-    exit;
-}
+//SE LA SESSIONE NON ESISTE SI CREA E VERIFICA LOGIN CON RUOLO CORRETTO
+verifica_login("U");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,20 +22,31 @@ if($_SESSION["autenticato"]!="U"){
         ?>
     </h2>
     <?php
+        //SE C'E' UN MESSAGGIO QUESTO VIENE VISUALIZZATO
+        if (isset($_GET["messaggio"])) echo "<h1>". $_GET["messaggio"]."</h1>";
+    ?>
+    <form action="utente.php">
+    <select name="tipologia">
+        <option value="">Tutte</option>
+        <?php
+        $gestore=new GestoreCSV();
+        $tipologie=$gestore->ottieni_da_file(__DIR__."/documenti/tipologie.csv");
+        foreach($tipologie as $tipologia){
+            echo "<option value='$tipologia'>$tipologia</option>";
+        }
+       ?>
+            <input type="submit"value="Go"/>
+    </select>
+       </form>
+    <?php
+        //VISUALIZZA EVENTI IN BASE AL TIPOLOGIA (NULL PER TUTTI)
+        $categoria="";
+        if(isset($_GET["tipologia"]))
+            $categoria=$_GET["tipologia"];
+
         $file_eventi=new Eventi();
-        foreach($file_eventi->ottieniEventiPerTipologia(NULL) as $eventi){
-            echo "<div>";
-            echo "Creatore: ".$eventi->getCreatore()."<br>";
-            echo "Nome: ".$eventi->getNome()."<br>";
-            echo "Tipologia: ".$eventi->getTipologia()."<br>";
-            echo "DataInizio: ".$eventi->getDataInizio()."<br>";
-            echo "Data fine: ".$eventi->getDataFine()."<br>";
-            echo "Luogo: ".$eventi->getLuogo()."<br>";
-            echo "Descrizione: ".$eventi->getDescrizione()."<br>";
-            echo "Prezzo: ".$eventi->getPrezzo()."<br>";
-            echo "<a href='gestori/prenota.php?NomeEvento=".$eventi->getNome()."'>prenotati</a>";
-            echo "<hr>";
-            echo "</div>";
+        foreach($file_eventi->ottieniEventiPerTipologia($categoria) as $evento){
+            echo $evento->render(true);
         }
     ?>
 

@@ -31,6 +31,16 @@ class Prenotazioni {
         return false;
     }
 
+    public function ottieniByNome($nome) {
+        $prenotazioni = [];
+        foreach ($this->vettore_prenotazioni as $prenotazione) {
+            if ($prenotazione->getNome() == $nome) {
+                $prenotazioni[] = $prenotazione;
+            }
+        }
+        return $prenotazioni;
+    }
+
 
     public function salva() {
         $righe = [];

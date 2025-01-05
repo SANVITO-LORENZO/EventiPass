@@ -1,23 +1,9 @@
 <?php
 require_once("gestori/gestoreCSV.php");
+require_once("verificalogin.php");
 
-//SE LA SESSIONE NON ESISTE SI CREA
-if(!isset($_SESSION)) session_start();
-
-//CONTROLLO SE LA VARIABILE DI SESSIONE AUTENTICATO E' ESISTENTE
-if(!isset($_SESSION["autenticato"])){
-    header("location: index.php?messaggio=errore");
-    exit;
-}
-
-//A -->  AMMINISTRATORE
-//O -->  ORGANIZZATORE
-//U -->  UTENTE
-//CONTROLLO SE AUTENTICATO NON CORRISPONDE AD A MANDO A PAGINA INDEX
-if($_SESSION["autenticato"]!="A"){
-    header("location: index.php?messaggio=errore");
-    exit;
-}
+//SE LA SESSIONE NON ESISTE SI CREA E VERIFICA LOGIN CON RUOLO CORRETTO
+verifica_login("A");
 ?>
 <!DOCTYPE html>
 <html lang="en">

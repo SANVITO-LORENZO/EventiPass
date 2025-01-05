@@ -7,8 +7,7 @@ class GestoreCSV {
     public function ottieni_da_file($filename) {
         $vett_informazioni = [];
         if (file_exists($filename)) {
-            $contenuto = file_get_contents($filename);
-            $vett_informazioni = explode("\r\n", $contenuto);
+            $vett_informazioni = file($filename, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
         } else {
             throw new Exception("File non trovato: " . $filename);
         }
@@ -42,7 +41,11 @@ class GestoreCSV {
 
     //SALVA SUL FILE NON IN APPEND
     public function salva_su_file($filename, $righe): void {
+        print_r($righe);
+        echo"<br>";
         $contenuto = implode("\r\n", $righe);
+        print_r($contenuto);
+        echo"<br>";
         file_put_contents($filename, $contenuto);
     }
 

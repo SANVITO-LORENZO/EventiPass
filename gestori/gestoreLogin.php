@@ -1,8 +1,7 @@
 <?php
 require_once("..\classi\users.php");
-
-//SE LA SESSIONE NON ESISTE SI CREA
-if(!isset($_SESSION))session_start();
+require_once(__DIR__."/../verificalogin.php");
+verifica_sessione();
 
 //CONTROLLO SE LE VARIABILI SONO SETTATE
 if(!isset($_POST["nome"])||!isset($_POST["password"])){
@@ -31,7 +30,7 @@ if($risultato!="niente"){
     //O -->  ORGANIZZATORE
     //U -->  UTENTE
     $_SESSION["autenticato"]= $risultato;
-    header("Location: indirizzamento.php");  
+    redirect("");
     exit;
 }
 else{

@@ -31,10 +31,18 @@ class Eventi {
         return NULL;
     }
 
+    public function ottieniPerId($id) {
+        foreach ($this->vettore_eventi as $evento) {
+            if ($evento->getId() == $id) {
+                return $evento;
+            }
+        }
+        return NULL;
+    }
     public function ottieniEventiPerTipologia($tipologia) {
         $eventi_tipologia = [];
         foreach ($this->vettore_eventi as $evento) {
-            if ($evento->getTipologia() == $tipologia || $tipologia == NULL) {
+            if ($evento->getTipologia() == $tipologia || $tipologia == "") {
                 $eventi_tipologia[] = $evento;
             }
         }
@@ -46,7 +54,7 @@ class Eventi {
         foreach ($this->vettore_eventi as $evento) {
             $righe[] = $evento->toCsv();
         }
-        $this->gestoreCSV->salva_su_file("documenti/eventi.csv", $righe);
+        $this->gestoreCSV->salva_su_file(__DIR__."/../documenti/eventi.csv", $righe);
     }
 
     public function creaEvento($creatore, $nome, $tipologia, $data_inizio, $data_fine, $luogo, $descrizione, $prezzo) {
@@ -58,7 +66,7 @@ class Eventi {
         foreach ($this->vettore_eventi as $tmp) {
             $righe[] = $tmp->toCsv();
         }
-        $this->gestoreCSV->salva_su_file("../documenti/eventi.csv", $righe);
+        $this->gestoreCSV->salva_su_file(__DIR__."/../documenti/eventi.csv", $righe);
     }
 }
 ?>

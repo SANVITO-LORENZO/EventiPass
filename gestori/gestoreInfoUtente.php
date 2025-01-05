@@ -1,23 +1,10 @@
 <?php
 require_once(__DIR__."/gestoreCSV.php");
+require_once(__DIR__."/../classi/prenotazioni.php");
+require_once(__DIR__."/../classi/events.php");
 
-//SE LA SESSIONE NON ESISTE SI CREA
-if(!isset($_SESSION))session_start();
-
-//CONTROLLO SE LA VARIABILE DI SESSIONE AUTENTICATO E' ESISTENTE
-if(!isset($_SESSION["autenticato"])){
-    header("location: index.php?messaggio=errore");
-    exit;
-}
-
-//A -->  AMMINISTRATORE
-//O -->  ORGANIZZATORE
-//U -->  UTENTE
-//CONTROLLO SE AUTENTICATO NON CORRISPONDE AD U MANDO A PAGINA INDEX
-if($_SESSION["autenticato"]!="U"){
-    header("location: index.php?messaggio=errore");
-    exit;
-}
+require_once(__DIR__."/../verificalogin.php");
+verifica_login("U");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,8 +33,41 @@ if($_SESSION["autenticato"]!="U"){
                     break;
                 }
             }
+            ?>
 
-            
+            <div>
+                <h2>prenotazioni fatte:</h2>
+                <h3>eventi futuri:</h3>
+        <?php
+            $prenotazioni=new Prenotazioni();
+            $eventi=new Eventi();
+            $totale=0;
+            $mie_prenotazioni=$prenotazioni->ottieniByNome($_SESSION["username"]);
+            $miei_eventi=[];
+            foreach($mie_prenotazioni as $prenotazione){
+               $miei_eventi[]=$eventi->ottieniPerId($prenotazione->getIdEvento());
+            }   
+            usort($miei_eventi, fn($a, $b) => $a->getDataFine()< $b->getDataFine());
+            $oggi=new DateTime();
+            $i=0;
+            while($i<count($miei_eventi)&& $miei_eventi[$i]->getDataFine()>= $oggi){
+                $evento=$miei_eventi[$i];
+                echo $evento->render(false);
+                $totale+=$evento->getPrezzo();
+                $i++;
+            }
+            echo "<h3>eventi passati:</h3>";
+            while($i<count($miei_eventi)){
+                $evento=$miei_eventi[$i];
+                echo $evento->render(false);
+                $totale+=$evento->getPrezzo();
+                $i++;
+            }
+
+            echo "<h3>Totale speso:$totale</h3>"
         ?>
+            </div>
+
+            <a href="../utente.php">torna lista eventi</a>
 </body>
 </html>

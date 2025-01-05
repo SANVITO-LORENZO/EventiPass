@@ -1,8 +1,8 @@
 <?php
 require_once('../classi/events.php');
 
-//SE LA SESSIONE NON ESISTE SI CREA
-if (!isset($_SESSION)) session_start();
+require_once(__DIR__."/../verificalogin.php");
+verifica_login("O");
 
 //CONTROLLO SE LE VARIABILI SONO SETTATE
 if (!isset($_POST['nome']) || !isset($_POST['tipologia']) || !isset($_POST['data_inizio']) || !isset($_POST['data_fine']) || !isset($_POST['luogo']) || !isset($_POST['descrizione']) || !isset($_POST['prezzo'])) {

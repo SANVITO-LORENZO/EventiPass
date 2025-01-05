@@ -1,8 +1,8 @@
 <?php
 require_once("gestoreCSV.php");
 
-//SE LA SESSIONE NON ESISTE SI CREA
-if(!isset($_SESSION)) session_start();
+require_once(__DIR__."/../verificalogin.php");
+verifica_sessione();
 
 $nome = $_POST['name'];
 $azione = $_POST['azione'];

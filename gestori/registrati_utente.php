@@ -1,6 +1,6 @@
 <?php
-//SE LA SESSIONE NON ESISTE SI CREA
-if(!isset($_SESSION))session_start();
+require_once(__DIR__."/../verificalogin.php");
+verifica_sessione();
 ?>
 <!DOCTYPE html>
 <html lang="en">

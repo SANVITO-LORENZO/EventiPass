@@ -1,8 +1,7 @@
 <?php
 require("gestoreCSV.php");
-//SE LA SESSIONE NON ESISTE SI CREA
-if(!isset($_SESSION))session_start();
-
+require_once(__DIR__."/../verificalogin.php");
+verifica_sessione();
 
 //CONTROLLO SE LE VARIABILI SONO SETTATE
 if (!isset($_POST['nome']) || !isset($_POST['cognome']) || !isset($_POST['eta'])|| !isset($_POST['cf'])
