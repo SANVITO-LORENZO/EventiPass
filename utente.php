@@ -12,6 +12,7 @@ verifica_login("U");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="grafica/utente.css">
 </head>
 <body>
     <h1>PAGINA UTENTE</h1>
@@ -35,7 +36,7 @@ verifica_login("U");
             echo "<option value='$tipologia'>$tipologia</option>";
         }
        ?>
-            <input type="submit"value="Go"/>
+            <input type="submit"value="Search"/>
     </select>
        </form>
     <?php

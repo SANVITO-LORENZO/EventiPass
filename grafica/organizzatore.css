@@ -1,0 +1,165 @@
+/* Impostazioni di base */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+h1, h2, h3 {
+    text-align: center;
+    color: #ffffff;
+    margin: 20px 0;
+}
+
+h3 {
+    margin-top: 40px;
+    font-size: 1.5em;
+}
+
+/* Tabelle */
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+table th, table td {
+    border: 1px solid #333;
+    padding: 10px;
+    text-align: center;
+}
+
+table th {
+    background-color: #2b2b2b;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+table tr:nth-child(even) {
+    background-color: #262626;
+}
+
+/* Form */
+form {
+    width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+form table {
+    width: 100%;
+    margin: 0;
+    border: none;
+}
+
+form table td {
+    padding: 10px;
+}
+
+form label {
+    color: #e0e0e0;
+    font-weight: bold;
+}
+
+input, select, textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #2b2b2b;
+    color: #e0e0e0;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+    appearance: none;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #5a5a5a;
+    outline: none;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #444;
+}
+
+/* Messaggi di errore */
+.error-message {
+    color: #ff6b6b;
+    text-align: center;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* Contenitore degli eventi */
+.event-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.event {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 8px;
+    width: 300px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.event h3 {
+    color: #ffffff;
+}
+
+.event p {
+    color: #b0b0b0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.event button {
+    margin-top: 10px;
+    background-color: #444;
+}
+
+.event button:hover {
+    background-color: #555;
+}
+
+/* Stile per il bottone submit con testo "CREA EVENTO" */
+button[type="submit"] {
+    background-color: #444;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+button[type="submit"]:hover {
+    background-color: #555;
+}

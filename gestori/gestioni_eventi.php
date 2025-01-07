@@ -71,3 +71,4 @@ if ($evento_id) {
     header("Location: ../organizzatore.php?messaggio=ERRORE: errore");
     exit;}
 ?>
+

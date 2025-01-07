@@ -16,7 +16,7 @@ class Evento{
         $this->creatore = $creatore;
         $this->nome = $nome;
         $this->tipologia = $tipologia;
-        $this->data_inizio = new DateTime($data_inizio);
+        $this->data_inizio = new DateTime($data_inizio);//per la sort con la data e anche il confronto per vedere se è un eveto passato 
         $this->data_fine = new DateTime($data_fine);
         $this->luogo = $luogo;
         $this->descrizione = $descrizione;

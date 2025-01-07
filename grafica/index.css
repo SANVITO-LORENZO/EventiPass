@@ -1,0 +1,62 @@
+/* File CSS per la Pagina di Login */
+
+/* Impostazioni generali */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e6f7ff; /* Azzurro chiaro per lo sfondo */
+    color: #000; /* Nero per il testo */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+h1 {
+    color: #003366; /* Blu scuro per il titolo */
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+form {
+    background-color: #ffffff; /* Bianco per i moduli */
+    border: 2px solid #0073e6; /* Blu per i bordi */
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px 0;
+    width: 300px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"], input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #0073e6; /* Blu per i bordi */
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+button {
+    background-color: #0073e6; /* Blu */
+    color: #fff; /* Bianco per il testo */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #005bb5; /* Blu più scuro quando si passa sopra con il mouse */
+}
+
+/* Aggiunta di un messaggio */
+.messaggio {
+    color: #cc0000; /* Rosso scuro per i messaggi */
+    font-weight: bold;
+    margin-bottom: 10px;
+}

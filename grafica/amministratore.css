@@ -1,20 +1,99 @@
-table {
-    width: 50%;
-    border-collapse: collapse;
+/* Impostazioni generali */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #76ff03;
     margin: 20px 0;
 }
-table, th, td {
-    border: 1px solid black;
+
+h2 {
+    margin-top: 10px;
 }
-th, td {
-    padding: 8px;
+
+/* Tabelle */
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    border: 1px solid #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+table th, table td {
+    padding: 12px;
     text-align: left;
+    border: 1px solid #333;
 }
+
 th {
-    background-color: #f2f2f2;
+    background-color: #2e2e2e;
+    color: #76ff03;
+    font-weight: bold;
 }
+
+td {
+    background-color: #1a1a1a;
+}
+
+/* Pulsanti */
 button {
-    padding: 5px 10px;
-    margin: 2px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #76ff03;
+    color: #121212;
+    font-size: 14px;
     cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #64dd17;
+}
+
+/* Moduli */
+form {
+    display: inline;
+}
+
+input[type="hidden"] {
+    display: none;
+}
+
+/* Tabelle con bordi */
+.table-bordered {
+    border: 1px solid #333;
+}
+
+/* Link e messaggi */
+a {
+    color: #76ff03;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Intestazione */
+header {
+    background-color: #1e1e1e;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Logout */
+form[action*="gestoreLogout"] button {
+    margin: 20px auto;
+    display: block;
 }
