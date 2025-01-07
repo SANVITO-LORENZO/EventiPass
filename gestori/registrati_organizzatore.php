@@ -43,7 +43,7 @@ verifica_sessione();
         </select>
         <br><br>
         <label>Stato:</label><br>
-        <input type="text" name="stato" value="Italia" required disabled>
+        <input type="text" name="stato" value="Italia" required readonly>
         <br><br>
         <label >Mail:</label><br>
         <input type="email" name="mail" required>
