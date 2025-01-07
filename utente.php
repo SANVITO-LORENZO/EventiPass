@@ -36,8 +36,11 @@ verifica_login("U");
             echo "<option value='$tipologia'>$tipologia</option>";
         }
        ?>
-            <input type="submit"value="Search"/>
+            
     </select>
+
+        <input type="submit"value="Search"/>
+        
        </form>
     <?php
         //VISUALIZZA EVENTI IN BASE AL TIPOLOGIA (NULL PER TUTTI)

@@ -1,0 +1,79 @@
+/* Stile generale per il corpo della pagina */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    margin: 0;
+    padding: 20px;
+    color: #333;
+    text-align: center;
+}
+
+/* Titolo principale */
+h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Tabella */
+table {
+    margin: 0 auto;
+    width: 80%;
+    border-collapse: collapse;
+    background: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #4caf50;
+    color: #fff;
+    font-size: 1.2em;
+    text-transform: uppercase;
+}
+
+td {
+    font-size: 1em;
+    color: #333;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Bottone */
+a button {
+    background-color: #4caf50;
+    color: #fff;
+    font-size: 1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+a button:hover {
+    background-color: #45a049;
+}
+
+a button:active {
+    background-color: #3e8e41;
+}
+
+a button:focus {
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(76, 175, 80, 0.75);
+}

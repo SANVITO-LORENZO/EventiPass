@@ -1,165 +1,115 @@
-/* Impostazioni di base */
+/* Stile generale */
 body {
     font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #f0f4f8, #d9e8ff);
     margin: 0;
-    padding: 0;
-    background-color: #121212;
-    color: #e0e0e0;
-}
-
-h1, h2, h3 {
-    text-align: center;
-    color: #ffffff;
-    margin: 20px 0;
-}
-
-h3 {
-    margin-top: 40px;
-    font-size: 1.5em;
-}
-
-/* Tabelle */
-table {
-    width: 90%;
-    margin: 20px auto;
-    border-collapse: collapse;
-    background-color: #1e1e1e;
-    color: #e0e0e0;
-}
-
-table th, table td {
-    border: 1px solid #333;
-    padding: 10px;
-    text-align: center;
-}
-
-table th {
-    background-color: #2b2b2b;
-    color: #ffffff;
-    font-weight: bold;
-}
-
-table tr:nth-child(even) {
-    background-color: #262626;
-}
-
-/* Form */
-form {
-    width: 90%;
-    margin: 20px auto;
     padding: 20px;
-    background-color: #1e1e1e;
-    border: 1px solid #333;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    color: #333;
 }
 
-form table {
-    width: 100%;
-    margin: 0;
-    border: none;
-}
-
-form table td {
-    padding: 10px;
-}
-
-form label {
-    color: #e0e0e0;
-    font-weight: bold;
-}
-
-input, select, textarea {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #333;
-    border-radius: 5px;
-    background-color: #2b2b2b;
-    color: #e0e0e0;
-}
-
-input[type="number"]::-webkit-inner-spin-button {
-    appearance: none;
-}
-
-input:focus, select:focus, textarea:focus {
-    border-color: #5a5a5a;
-    outline: none;
-}
-
-button {
-    padding: 10px 20px;
-    margin: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #333;
-    color: #ffffff;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #444;
-}
-
-/* Messaggi di errore */
-.error-message {
-    color: #ff6b6b;
+/* Titoli */
+h1 {
     text-align: center;
-    font-weight: bold;
+    color: #2b3e50;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+h2, h3 {
+    text-align: center;
+    color: #4a6572;
     margin: 10px 0;
 }
 
-/* Contenitore degli eventi */
-.event-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+/* Messaggio */
+form {
+    margin: 20px auto;
+    text-align: left;
+    width: 90%;
+    max-width: 600px;
+    background: #fff;
     padding: 20px;
-}
-
-.event {
-    background-color: #1e1e1e;
-    border: 1px solid #333;
     border-radius: 8px;
-    width: 300px;
-    padding: 15px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.event h3 {
-    color: #ffffff;
-}
-
-.event p {
-    color: #b0b0b0;
-    font-size: 14px;
-    line-height: 1.5;
-}
-
-.event button {
-    margin-top: 10px;
-    background-color: #444;
-}
-
-.event button:hover {
-    background-color: #555;
-}
-
-/* Stile per il bottone submit con testo "CREA EVENTO" */
-button[type="submit"] {
-    background-color: #444;
+form label {
+    display: block;
     font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    margin-bottom: 5px;
 }
 
-button[type="submit"]:hover {
-    background-color: #555;
+form input, form select, form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form textarea {
+    resize: vertical;
+}
+
+/* Centrare i pulsanti */
+form button, table form button {
+    display: block;
+    margin: 0 auto;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    text-align: center;
+}
+
+form button:hover, table form button:hover {
+    background-color: #0056b3;
+}
+
+/* Tabella */
+table {
+    margin: 20px auto;
+    width: 90%;
+    border-collapse: collapse;
+    background: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table th, table td {
+    text-align: left;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #4caf50;
+    color: #ffffff;
+    font-size: 1em;
+    text-transform: uppercase;
+}
+
+table td {
+    font-size: 0.95em;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Logout button */
+form[action*="gestoreLogout.php"] button {
+    background-color: #e74c3c;
+}
+
+form[action*="gestoreLogout.php"] button:hover {
+    background-color: #c0392b;
 }

@@ -1,0 +1,61 @@
+/* Stile generale */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #f9f9f9, #e0eafc);
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Stile per il contenuto principale */
+p {
+    font-size: 1.2em;
+    margin: 10px 0;
+    line-height: 1.5;
+}
+
+/* Link di navigazione */
+a {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #007bff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+a:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Box evento */
+.event-details {
+    display: inline-block;
+    margin: 20px auto;
+    padding: 15px 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    font-size: 1em;
+    max-width: 600px;
+    word-wrap: break-word;
+}
+
+/* Messaggi */
+.alert {
+    color: #e74c3c;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.success {
+    color: #2ecc71;
+    font-weight: bold;
+    margin-top: 20px;
+}

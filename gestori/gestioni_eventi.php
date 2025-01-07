@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../grafica/modifica.css">
 <?php
 require_once("gestoreCSV.php");
 require_once("../verificalogin.php");

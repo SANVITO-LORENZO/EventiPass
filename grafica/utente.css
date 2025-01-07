@@ -25,17 +25,6 @@ form h1 {
     color: #2a7a2a;
 }
 
-/* Contenitore principale per gli eventi */
-.event-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    gap: 20px;
-    padding: 20px;
-    overflow-x: auto;
-    white-space: nowrap;
-}
 
 .event {
     background-color: #ffffff;
@@ -126,7 +115,7 @@ button:hover {
 /* Contenitore principale per gli eventi */
 .event-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap; /* Permette di andare a capo se necessario */
     justify-content: center; /* Centra gli eventi orizzontalmente */
     align-items: center; /* Centra gli eventi verticalmente */
@@ -134,4 +123,8 @@ button:hover {
     padding: 20px;
     overflow-x: auto;
     white-space: nowrap;
+    border: 3px solid black; /* Cambia "3px" per variare lo spessore */
+    padding: 10px; /* Opzionale: Aggiunge un po' di spazio interno */
+    margin: 10px; /* Opzionale: Aggiunge uno spazio esterno tra i div */
+    border-radius: 5px; /* Opzionale: Aggiunge bordi arrotondati */
 }

@@ -1,0 +1,149 @@
+/* Impostazioni generali per il corpo della pagina */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #74ebd5, #acb6e5);
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+/* Titoli principali */
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px #000000;
+    margin-bottom: 10px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 1.8em;
+    color: #ffcc00;
+    margin-top: 10px;
+    text-shadow: 1px 1px 2px #000000;
+}
+
+h3 {
+    font-size: 1.5em;
+    color: #444;
+    text-decoration: underline;
+    margin-top: 20px;
+}
+
+/* Messaggio */
+[isset][get="messaggio"] {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    background-color: #ffd700;
+    color: #333;
+    border: 2px solid #ff8800;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Tabelle */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+th {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    font-size: 1.2em;
+    text-align: left;
+}
+
+td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+/* Form */
+form {
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Input e selettori */
+input, select, textarea, button {
+    width: calc(100% - 20px);
+    margin: 5px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #4caf50;
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(76, 175, 80, 0.75);
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* Pulsanti */
+button {
+    background-color: #4caf50;
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button:active {
+    background-color: #3e8e41;
+}
+
+button[type="submit"] {
+    width: 100%;
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(76, 175, 80, 0.75);
+}
+
+/* Logout button styling */
+form[action="gestori/gestoreLogout.php"] button {
+    background-color: #f44336;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1em;
+}
+
+form[action="gestori/gestoreLogout.php"] button:hover {
+    background-color: #e53935;
+}

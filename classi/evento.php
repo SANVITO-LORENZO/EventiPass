@@ -54,7 +54,7 @@ class Evento{
     }
     public function render($mostraPrenota){
         $render="";
-        $render.= "<div>";
+        $render.= "<div class='event-container'>";
         $render.= "Creatore: ".$this->creatore."<br>";
         $render.= "Nome: ".$this->nome."<br>";
         $render.= "Tipologia: ".$this->tipologia."<br>";
