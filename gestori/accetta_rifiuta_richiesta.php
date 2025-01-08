@@ -1,7 +1,7 @@
 <?php
 require_once("gestoreCSV.php");
-
 require_once(__DIR__."/../verificalogin.php");
+
 verifica_sessione();
 
 $nome = $_POST['name'];
@@ -27,7 +27,7 @@ $fileLogin = '../documenti/login.csv';
 try {
     $gestore = new GestoreCSV();
 
-    // OTTIENE LE RIGHE DAL FILE
+    //OTTIENE LE RIGHE DAL FILE
     $righeRichieste = $gestore->ottieni_da_file($fileRichieste);
 
     $righeAggiornate = [];
@@ -37,19 +37,16 @@ try {
     //PER OGNI RIGA
     foreach ($righeRichieste as $riga) {
         //CONTROLLO SE NON E' VUOTA
-
         if (!empty($riga)) {
             //DIVIDO LA RIGA PER ;
             $campi = explode(";", $riga);
 
             //SE I CAMPI SONO 5 O PIU' E IL PRIMO CAMPO CORRISPONDE AL NOME
             if (count($campi) >= 5 && $campi[0] == $nome) {
-
                 //TROVATA LA RIGA CORRISPONDENTE
                 $tmp = $riga;
                 //LA PASSWORD CORRISPONDE AL SECONDO CAMPO
                 $password = $campi[1]; 
-
             } else {
                 //ALTRIMENTI AGGIUNGO A VETT LA RIGA
                 $righeAggiornate[] = $riga;
@@ -57,25 +54,25 @@ try {
         }
     }
 
-    // SE VARIABILE NON E' NULLA
+    //SE VARIABILE NON E' NULLA
     if ($tmp) {
         //SE SI VUOLE ACCETTARE
         if ($azione == 'accetta') {
-            //AGGIUNGO AL FILEORGANIZZATORI LA RIGA
+            //AGGIUNGO AL FILE ORGANIZZATORI LA RIGA CON UN NUOVO CARATTERE DI FINE LINEA
             file_put_contents($fileOrganizzatori, $tmp . "\n", FILE_APPEND);
 
             //CREO STRINGA DA AGGIUNGERE AL FILE DI LOGIN
             $nuovaRigaLogin = "$nome;$password;O\n";
 
             //PRENDO INFORMAZIONI DA FILE DI LOGIN
-            $contenutoLogin = file_get_contents($fileLogin);
-            //COME SE FOSSE += MA CON LE STRINGHE QUINDI .=
-            $contenutoLogin .= $nuovaRigaLogin; 
-            //AGGIUNGO A FILE
-            file_put_contents($fileLogin, $contenutoLogin);
-            
+            $contenutoLogin = file($fileLogin, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+            //AGGIUNGO LA NUOVA RIGA
+            $contenutoLogin[] = $nuovaRigaLogin;
+            //RISCRIVO IL FILE DI LOGIN GARANTENDO UNA RIGA PER OGNI VOCE
+            file_put_contents($fileLogin, implode("\n", $contenutoLogin) . "\n");
         }
     }
+
     //AGGIORNO IL FILE DELLE RICHIESTE
     file_put_contents($fileRichieste, implode("\n", $righeAggiornate));
 
