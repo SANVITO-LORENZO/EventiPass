@@ -1,4 +1,6 @@
 <?php
+//non usata!
+
 //SE LA SESSIONE NON ESISTE SI CREA
 if(!isset($_SESSION))session_start();
 

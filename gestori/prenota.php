@@ -20,12 +20,12 @@ verifica_login("U");
         $nome_file=__DIR__."/../documenti/prenotazioni.csv";
         $e=new Eventi();
     
-        $event=$e->ottieniPerId($_GET["IdEvento"]);
+        $event=$e->ottieniPerId($_GET["IdEvento"]);//ottengo evento al quale voglio registrarmi
         $prenotazioni=new Prenotazioni();
-        $contenuto= !$prenotazioni->verificaEsistenza($_SESSION["username"],$event->getId());
+        $contenuto= !$prenotazioni->verificaEsistenza($_SESSION["username"],$event->getId());//verifico non esista già
         echo $event->toCsv()."<br>";
         if($contenuto)
-            $prenotazioni->creaPrenotazione( $_SESSION["username"],$event->getId());
+            $prenotazioni->creaPrenotazione( $_SESSION["username"],$event->getId());//creo la prenotazione e la salvo su file
         else
         {
             echo "Hai già prenotato l'evento";

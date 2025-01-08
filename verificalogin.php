@@ -1,6 +1,6 @@
 <?php
 
-    function verifica_sessione(){
+    function verifica_sessione(){//verifico che ho la sessione attiva,se è no me la avvia
         if(!isset($_SESSION))session_start();
     }
     function verifica_accesso(){
@@ -9,7 +9,7 @@
             header("location: index.php?messaggio=errore");
             exit;
         }
-    }
+    }//verifico che ho fatto l'accesso e controlla il ruolo
     function verifica_login($ruolo){
         verifica_sessione();
         verifica_accesso();
@@ -24,7 +24,7 @@
         }
     }
 
-    function redirect($errore){
+    function redirect($errore){//ridirige 
         if(isset($_SESSION["autenticato"])){
 
             //IN BASE AL VALORE INDIRIZZO SULLA PAGINA CORRISPONDENTE

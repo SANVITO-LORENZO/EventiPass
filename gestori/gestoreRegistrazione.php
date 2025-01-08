@@ -62,6 +62,12 @@ elseif (!preg_match("/^\d{16}$/", $carta)) {
     $messaggioErrore = "Numero di carta non valido. Deve contenere esattamente 16 cifre.";
 }
 
+
+//controllo che username e altri campi siano univoci
+if (!$gestore->campiNonEsistenti($nome,$cf,$mail,$numero)) {
+    
+    $messaggioErrore="campi gia usati!";
+}
 //SE ERRORE PRESENTE
 if ($messaggioErrore) {
     header("Location: ../index.php?messaggio=$messaggioErrore");
@@ -71,13 +77,11 @@ if ($messaggioErrore) {
 //DOCUMENTO DOVE SONO TENUTE TUTTE LE INFORMAZIONI DI LOGIN
 $fileLogin = "..\documenti\login.csv";
 
-
-
 //CREO STRINGA NUOVO UTENTE
 $nuovo_utente = "$nome;$password;$ruolo";
 
 //AGGIUNGO A FILE
-if ($gestore->ottieni_da_file($fileLogin)) {
+if ($gestore->ottieni_da_file($fileLogin)) {//salvo solo nome,pass,ruolo
     $gestore->salva_su_file_append($fileLogin, "\r\n" . $nuovo_utente);
 } else {
     $gestore->salva_su_file_append($fileLogin,  $nuovo_utente);
@@ -85,7 +89,7 @@ if ($gestore->ottieni_da_file($fileLogin)) {
 $file_utenti="..\documenti\users\utenti.csv";
 $nuovo_utente = "$nome;$cognome;$eta;$cf;$mail;$prefissi;$numero;$residenza;$carta";
 
-if($gestore->ottieni_da_file(filename: $file_utenti))
+if($gestore->ottieni_da_file(filename: $file_utenti))//salvo su file tutte le info dell'utente
     $gestore->salva_su_file_append($file_utenti, "\r\n" . $nuovo_utente);
 else
     $gestore->salva_su_file_append($file_utenti,  $nuovo_utente);

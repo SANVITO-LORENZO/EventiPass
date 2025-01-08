@@ -14,10 +14,13 @@ class GestoreCSV {
         return $vett_informazioni;
     }
 
+    //ti permette di trovare se esite un utente con quei campi
     public function campiNonEsistenti($nome,$cf,$mail,$numero){
+
         $utenti=$this->ottieni_da_file(__DIR__."/../documenti/users/utenti.csv");
         $organizzatori=$this->ottieni_da_file(__DIR__."/../documenti/users/organizzatori.csv");
         $admin=$this->ottieni_da_file(__DIR__."/../documenti/users/admin.csv");
+        
         foreach($utenti as $u){
             $campi=explode(";",$u);
             if($campi[0]==$nome || $campi[3]==$cf || $campi[4]==$mail||$campi[6]==$numero){
@@ -41,10 +44,8 @@ class GestoreCSV {
 
     //SALVA SUL FILE NON IN APPEND
     public function salva_su_file($filename, $righe): void {
-        print_r($righe);
-        echo"<br>";
+        
         $contenuto = implode("\r\n", $righe);
-        echo"<br>";
         file_put_contents($filename, $contenuto);
     }
 

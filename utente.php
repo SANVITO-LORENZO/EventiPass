@@ -31,7 +31,7 @@ verifica_login("U");
         <option value="">Tutte</option>
         <?php
         $gestore=new GestoreCSV();
-        $tipologie=$gestore->ottieni_da_file(__DIR__."/documenti/tipologie.csv");
+        $tipologie=$gestore->ottieni_da_file(__DIR__."/documenti/tipologie.csv");//leggo le tipologie(combobox pag utente)
         foreach($tipologie as $tipologia){
             echo "<option value='$tipologia'>$tipologia</option>";
         }
@@ -43,14 +43,14 @@ verifica_login("U");
         
        </form>
     <?php
-        //VISUALIZZA EVENTI IN BASE AL TIPOLOGIA (NULL PER TUTTI)
+        //VISUALIZZA EVENTI IN BASE AL TIPOLOGIA ("" PER TUTTI)
         $categoria="";
-        if(isset($_GET["tipologia"]))
+        if(isset($_GET["tipologia"]))//se ho selezionato qualcosa nella combo ,me lo setta 
             $categoria=$_GET["tipologia"];
 
         $file_eventi=new Eventi();
-        foreach($file_eventi->ottieniEventiPerTipologia($categoria) as $evento){
-            echo $evento->render(true);
+        foreach($file_eventi->ottieniEventiPerTipologia($categoria) as $evento){//stampo tutti gli eventi che rispettano la categoria selezionata
+            echo $evento->render(true);//aver la possibilità di prenotarsi
         }
     ?>
 

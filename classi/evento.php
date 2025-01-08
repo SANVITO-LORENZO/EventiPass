@@ -1,5 +1,6 @@
 <?php
 class Evento{
+    //singolo evento
     private $id;
     private $creatore;
     private $nome;
@@ -53,12 +54,13 @@ class Evento{
     return $this->id.";".$this->creatore.";".$this->nome.";".$this->tipologia.";".$this->data_inizio->format('Y-m-d H:i:s').";".$this->data_fine->format('Y-m-d H:i:s').";".$this->luogo.";".$this->descrizione.";".$this->prezzo;
     }
     public function render($mostraPrenota){
+        //serve per stampare ,mostra a seconda di cosa gli passo
         $render="";
         $render.= "<div class='event-container'>";
         $render.= "Creatore: ".$this->creatore."<br>";
         $render.= "Nome: ".$this->nome."<br>";
         $render.= "Tipologia: ".$this->tipologia."<br>";
-        $render.= "DataInizio: ".$this->data_inizio->format('Y-m-d H:i:s')."<br>";
+        $render.= "DataInizio: ".$this->data_inizio->format('Y-m-d H:i:s')."<br>";//anno-mese-giorno-ora-minuto-secondo
         $render.= "Data fine: ".$this->data_fine->format('Y-m-d H:i:s')."<br>";
         $render.= "Luogo: ".$this->luogo."<br>";
         $render.= "Descrizione: ".$this->descrizione."<br>";

@@ -1,5 +1,7 @@
 <?php
 class Prenotazione{
+
+    //creo la singola prenotazione
     private $nome;
     private $id_evento;
 
