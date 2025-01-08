@@ -53,6 +53,6 @@ $creatore = $_SESSION["username"];
 $eventi->creaEvento($creatore, $nome, $tipologia, $data_inizio, $data_fine, $luogo, $descrizione, $prezzo);
 
 //REINDIRIZZAMENTO
-header("Location: ../organizzatore.php?messaggio=ERRORE: Evento creato con successo.");
+header("Location: ../organizzatore.php");
 exit();
 ?>
