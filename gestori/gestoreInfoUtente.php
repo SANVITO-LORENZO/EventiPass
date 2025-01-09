@@ -51,10 +51,15 @@ verifica_login("U");
             foreach($mie_prenotazioni as $prenotazione){//data le mie prenotazioni ,prendo le info degli eventi al quale partecipo
                $miei_eventi[]=$eventi->ottieniPerId($prenotazione->getIdEvento());//prendo le info dell'evento al quale sono prenotato
             }   
-            //metodo con 2 parametri a-b e se il metodo restituisce true li scambia
-            function riordina($a,$b){
-
-               return $a->getDataFine()< $b->getDataFine();
+            //metodo con 2 parametri a-b e se il metodo restituisce 1 li scambia
+            function riordina($a, $b) {
+                if ($a->getDataFine() < $b->getDataFine()) {
+                    return 1; // $a viene prima di $b
+                } elseif ($a->getDataFine() > $b->getDataFine()) {
+                    return -1; // $a viene dopo $b
+                } else {
+                    return 0; // $a e $b sono uguali
+                }
             }
 
             usort($miei_eventi, "riordina");//sort eventi per la data fine(vedo prima i futuri)
